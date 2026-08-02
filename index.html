@@ -21,6 +21,11 @@
   main{max-width:1080px;margin:0 auto;padding:22px 18px 70px}
   .page{display:none}
   .page.active{display:block}
+  .subpage{display:none}
+  .subpage.active{display:block}
+  .subnav{display:flex;gap:8px;margin:2px 0 14px;border-bottom:1px solid var(--line)}
+  .subnav button{border:0;background:none;padding:9px 4px;margin-right:14px;font-size:.86rem;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent}
+  .subnav button.active{color:var(--accent);border-bottom-color:var(--accent)}
   h2{font-size:1.25rem;margin:26px 0 6px;color:var(--sea-d)}
   h2:first-child{margin-top:4px}
   .sub{color:var(--muted);font-size:.9rem;margin:0 0 16px}
@@ -59,6 +64,12 @@
   .card{cursor:pointer;transition:transform .12s, box-shadow .12s}
   .card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(30,42,50,.13)}
   .card.food-card .ph{height:130px}
+  .card.restaurant-card{cursor:default}
+  .card.restaurant-card:hover{transform:none;box-shadow:0 1px 3px rgba(30,42,50,.06)}
+  .card.restaurant-card .ph{height:130px}
+  .card.restaurant-card h3 a{color:var(--sea-d);text-decoration:none}
+  .card.restaurant-card h3 a:hover{text-decoration:underline}
+  .facts span.mapl{background:#eaf2fb;color:#1a5a96}
   .modal{position:fixed;inset:0;background:rgba(20,30,36,.6);display:none;z-index:100;padding:26px 12px;overflow-y:auto}
   .modal.open{display:block}
   .mbox{background:#fff;border-radius:16px;max-width:780px;margin:0 auto;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.35)}
@@ -80,16 +91,16 @@
 
 <header class="hero">
   <h1>🌊 Brittany 2026 — Family Trip Guide</h1>
-  <p>Aug 6–23 · 2 adults + one 10-year-old · arriving &amp; departing Nantes · master guide merged and deepened from 23 research files (Claude, ChatGPT, Perplexity deep-research reports), deduplicated — tap any card for the full write-up. Photos load from Wikipedia when online.</p>
+  <p>Aug 6–23, 2026 · 2 adults + one 10-year-old · Porto → Nantes → Vannes → Quimper → Dinan → Nantes → Porto · master guide merged and deepened from 23 research files (Claude, ChatGPT, Perplexity deep-research reports), deduplicated — tap any card for the full write-up. Photos load from Wikipedia when online.</p>
 </header>
 
 <nav id="nav">
   <button data-page="plan" class="active">📋 Plan &amp; Bases</button>
-  <button data-page="north">🏰 North</button>
-  <button data-page="pink">🪨 Pink Granite</button>
-  <button data-page="west">⛵ West</button>
-  <button data-page="south">🗿 South</button>
-  <button data-page="nantes">🐘 Nantes</button>
+  <button data-page="nantes">🐘 Nantes <span class="kv">6–9 · 22–23</span></button>
+  <button data-page="south">🗿 Vannes <span class="kv">9–14</span></button>
+  <button data-page="west">⛵ Quimper <span class="kv">14–18</span></button>
+  <button data-page="north">🏰 Dinan <span class="kv">18–22</span></button>
+  <button data-page="pink">🪨 Pink Granite <span class="kv">opt.</span></button>
   <button data-page="food">🥞 Food</button>
   <button data-page="logistics">🚗 Logistics</button>
   <button data-page="checklist">✅ Booking</button>
@@ -99,32 +110,53 @@
 
 <!-- ============ PLAN ============ -->
 <section class="page active" id="page-plan">
-  <h2>The route: Nantes first (Aug 6–9), then a clockwise loop</h2>
-  <p class="sub">Starting with 3 nights in Nantes lets the Interceltique festival (Lorient, through Aug 9) finish before you head into Morbihan — so the loop runs south → west → north, ending with Mont-Saint-Michel as the finale.</p>
+  <h2>The confirmed route: Nantes → Vannes → Quimper → Dinan → Nantes</h2>
+  <p class="sub">Booked and locked. Four bases, three moves, an anticlockwise sweep south → west → north, with Nantes as both bookends. <b>The car is only yours from 17:30 on Sun Aug 9 to 17:30 on Sat Aug 22</b> — both Nantes stays are car-free, which changes what is possible there.</p>
   <table>
-    <tr><th>Dates</th><th>Nights</th><th>Base</th><th>Anchors</th></tr>
-    <tr><td><b>Aug 6–9</b></td><td>3</td><td><b>Nantes</b></td><td>Machines de l'île, Château des ducs, green-line art trail; day 3 option: sea day Guérande + La Baule, or the Planète Sauvage safari park (~25 min away)</td></tr>
-    <tr><td><b>Aug 9–13</b></td><td>4</td><td><b>Vannes or Auray</b></td><td>Carnac, Gulf of Morbihan boat, Suscinio + night show Tue Aug 11, Rochefort-en-Terre</td></tr>
-    <tr><td><b>Aug 13–17</b></td><td>4</td><td><b>Quimper or Crozon</b></td><td>Crozon peninsula, Locronan, Pointe du Raz, Quimper, Concarneau (Filets Bleus parade Sun Aug 16)</td></tr>
-    <tr><td><b>Aug 17–20</b></td><td>3</td><td><b>Perros-Guirec / Trégastel</b></td><td>Ploumanac'h, Sept-Îles boat, Île de Bréhat (before cap ends ~Aug 22), Huelgoat / Vallée des Saints en route</td></tr>
-    <tr><td><b>Aug 20–23</b></td><td>3</td><td><b>Saint-Malo area</b><br><span class="kv">Paramé / Saint-Servan, or Dinan for value</span></td><td>Mont-Saint-Michel early Fri Aug 21, Saint-Malo, Dinan, Cancale — drive to airport Sun Aug 23 (~2 h)</td></tr>
+    <tr><th>Dates</th><th>Nights</th><th>Base</th><th>Stay</th><th>Anchors</th></tr>
+    <tr><td><b>Thu 6 – Sun 9 Aug</b></td><td>3</td><td><b>Nantes</b></td><td>ibis Styles Nantes Centre Gare</td><td>Machines de l'île, Château des ducs, green-line art trail, Jardin des Plantes. <b>No car</b> — day trips by TER only (Clisson 18 min, Guérande/La Baule ~1 h).</td></tr>
+    <tr><td><b>Sun 9 – Fri 14 Aug</b></td><td>5</td><td><b>Vannes</b><br><span class="kv">Gulf of Morbihan</span></td><td>B&amp;B HOTEL Vannes Ouest</td><td>Carnac alignments, Gulf boat trip, Château de Suscinio + the <i>Arthur, Roi de Bretagne</i> night show (Tue 11 or Thu 13), Rochefort-en-Terre</td></tr>
+    <tr><td><b>Fri 14 – Tue 18 Aug</b></td><td>4</td><td><b>Quimper</b><br><span class="kv">Cornouaille</span></td><td>Airbnb</td><td>Quimper old town, Locronan, Pointe du Raz, Crozon peninsula, Concarneau — <b>Filets Bleus Grande Parade Sun 16 Aug</b></td></tr>
+    <tr><td><b>Tue 18 – Sat 22 Aug</b></td><td>4</td><td><b>Dinan</b><br><span class="kv">Rance valley</span></td><td>Airbnb</td><td>Mont-Saint-Michel (~1 h), Saint-Malo (~30 min), Cap Fréhel &amp; Fort la Latte, Cancale oysters, Dinan itself</td></tr>
+    <tr><td><b>Sat 22 – Sun 23 Aug</b></td><td>1</td><td><b>Nantes</b></td><td>ibis Styles Nantes Centre Gare</td><td>Whatever you missed on arrival. <b>Car returned 17:30</b>, so the evening is on foot.</td></tr>
   </table>
-  <div class="callout red"><b>Transfer days:</b> Sun 9 · Thu 13 · Mon 17 · Thu 20. <b>Never drive long on Sat Aug 8 or Sat Aug 15</b> — Bison Futé black/red traffic days; Aug 15 is a national holiday. If the Aug 23 flight is early, sleep Aug 22 near Rennes/Nantes instead of Saint-Malo.</div>
-  <div class="callout"><b>Rhythm rule</b> (from your own research): 1–2 sights per day max, one "empty" beach/pool day per base. Everything headline: before 10am or after 5pm.</div>
+
+  <div class="callout red"><b>Three things this itinerary changes.</b>
+  <ol class="tight">
+    <li><b>No car in Nantes, either end.</b> Pick-up is 17:30 Sun 9 Aug at Gare de Nantes, drop-off 17:30 Sat 22 Aug at the same counter. <b>Planète Sauvage no longer works</b> — it is a self-drive safari with no public transport. Swap it for Clisson (18-min TER, and the château is free for under-26s) or a Guérande + La Baule sea day by TER.</li>
+    <li><b>Sat 22 Aug is a transfer day on a August Saturday.</b> Dinan → Nantes is ~2 h 30 clear, but this is peak Bison Futé territory and you must make a 17:30 drop-off. <b>Leave Dinan by 13:30</b> and treat Mont-Saint-Michel as a Wed/Thu job, not a Saturday one.</li>
+    <li><b>You arrive in Morbihan on the closing day of Interceltique.</b> The Lorient festival runs to Sun 9 Aug and Vannes is only 60 km away — expect heavy traffic on the N165 that evening. You are driving it from 17:30 anyway, so allow 1 h 30 rather than 1 h 15, and <b>book Sunday dinner in Vannes or buy supplies first</b>: Breton kitchens close early on Sundays.</li>
+  </ol></div>
+
+  <div class="callout"><b>Transfer days:</b> Sun 9 Aug (evening, after 17:30) · Fri 14 Aug · Tue 18 Aug · Sat 22 Aug. <b>Sat 15 Aug is a national holiday and a Bison Futé black day — you are static in Quimper that day, which is the right place to be.</b> Nothing needs to be driven far on 15 Aug.</div>
+
+  <div class="callout"><b>Rhythm rule</b> (from your own research): 1–2 sights per day max, one "empty" beach/pool day per base. Everything headline: before 10:00 or after 17:00.</div>
+
+  <h2>Getting in and out</h2>
+  <ul class="tight">
+    <li><b>Thu 6 Aug · Porto → Nantes</b>, easyJet <b>KCZK477</b>. Airport → city centre by <b>Uber, ~€30</b>. (The tramway-bus 87 plus tram, or the airport shuttle, are cheaper alternatives; the shuttle is bundled into the Pass Nantes.)</li>
+    <li><b>Sun 9 Aug 17:30 · car pick-up, Gare de Nantes</b> — booked through Keddy/Rentalcars, collected at the <b>Sixt</b> counter. Station pick-up, not airport. <b>Automatics are scarce in France — confirm yours is reserved explicitly</b>, and check the Crit'Air sticker is on the windscreen before you drive off.</li>
+    <li><b>Sat 22 Aug 17:30 · car drop-off, Gare de Nantes.</b> 13 days of rental. The hotel is beside the station, so you can drop the car and walk to your room.</li>
+    <li><b>Sun 23 Aug · Nantes → Porto.</b> No car — allow 30–40 min to the airport by shuttle or Uber and set off accordingly.</li>
+  </ul>
+
   <h2>Dates that shape the trip</h2>
   <ul class="tight">
-    <li><b>Jul 31 – Aug 9 · Festival Interceltique, Lorient</b> — ~950k visitors; avoid basing near Lorient in week 1 (you'll be north ✓).</li>
-    <li><b>Aug 12–16 · Filets Bleus, Concarneau</b> — free concerts, Grande Parade Sun Aug 16, 10:30 (€10, under-10 free). Fits base 3 ✓.</li>
-    <li><b>Aug 13–15 · Grandes marées</b> (coef ~102, peak Fri 14) — spectacular tides; watch beach timing on the north coast.</li>
-    <li><b>Tue/Thu evenings · "Arthur, Roi de Bretagne" son-et-lumière at Suscinio</b> — Tue Aug 11 fits the Vannes base ✓ (Thu Aug 13 is the backup). €17.50 / €11 (10–17), free under 10; book online, 2,000 seats.</li>
+    <li><b>To Sun 9 Aug · Festival Interceltique, Lorient</b> — ~950k visitors, and its final day is your Nantes → Vannes drive. Traffic caution, above.</li>
+    <li><b>Tue 11 &amp; Thu 13 Aug · "Arthur, Roi de Bretagne" son-et-lumière, Château de Suscinio</b> — both fall inside your Vannes stay. €17.50 / €11 (10–17), free under 10; 2,000 seats, book online.</li>
+    <li><b>Wed 12 – Sun 16 Aug · Filets Bleus, Concarneau</b> — free concerts, <b>Grande Parade Sun 16 Aug 10:30</b> (€10, under-10 free). Concarneau is 25 min from Quimper, so this lands perfectly in base 3.</li>
+    <li><b>Thu 13 – Sat 15 Aug · Grandes marées</b> (coefficient ~102, peak Fri 14) — you are moving Vannes → Quimper on the 14th; the drama is on the north coast, so this mostly affects your Dinan week's beach timing.</li>
+    <li><b>Sat 15 Aug · Assumption, national holiday</b> — museums and many restaurants shut or run holiday hours. You are based in Quimper: plan a town day, book lunch ahead.</li>
+    <li><b>Jul 4 – Sep 6 · Le Voyage à Nantes</b>, "La Terre" edition — live for both Nantes stays.</li>
   </ul>
-  <h2>Alternative: 3 bases (fewer moves)</h2>
-  <p class="sub">Saint-Malo 6 / Quimper-or-Crozon 5 / Vannes 5 / Nantes 1 — drops the Pink Granite Coast, which several researches rank as the #1 "wow" for a 10-year-old. That's the trade.</p>
+
+  <h2>What this route trades away</h2>
+  <p class="sub">The <b>Pink Granite Coast</b> (Ploumanac'h, Sept-Îles, Trégastel) is not on the itinerary — several of your research files rank it the #1 "wow" for a 10-year-old. From Dinan it is ~1 h 45 each way, so it is a long but possible day trip on Wed 19 or Thu 20 Aug. <b>Île de Bréhat</b> is closer, ~1 h 30. The Pink Granite tab is kept in this guide for exactly that decision.</p>
 </section>
 
 <!-- ============ REGION PAGES (cards injected) ============ -->
 <section class="page" id="page-north">
-  <h2>Base 1 · Emerald Coast &amp; Mont-Saint-Michel (Aug 6–11)</h2>
+  <h2>Base 3 · Dinan, Emerald Coast &amp; Mont-Saint-Michel (Tue 18 – Sat 22 Aug)</h2>
   <p class="sub">Corsair walls, extreme tides (up to 13 m — swim by the tide table), oysters, and the one mandatory day trip into Normandy.</p>
   <div class="searchbar"><input type="search" placeholder="Filter attractions…" oninput="filterCards(this)"></div>
   <div class="grid" data-region="north"></div>
@@ -132,14 +164,14 @@
 </section>
 
 <section class="page" id="page-pink">
-  <h2>Base 2 · Pink Granite Coast &amp; inland gems (Aug 11–14)</h2>
+  <h2>Optional · Pink Granite Coast &amp; inland gems <span class="kv">(not a base — day trip from Dinan, ~1 h 45)</span></h2>
   <p class="sub">300-million-year-old pink boulders, puffin islands, and two inland "hidden gems" your researches rave about.</p>
   <div class="searchbar"><input type="search" placeholder="Filter attractions…" oninput="filterCards(this)"></div>
   <div class="grid" data-region="pink"></div>
 </section>
 
 <section class="page" id="page-west">
-  <h2>Base 3 · Finistère — Crozon &amp; Cornouaille (Aug 14–19)</h2>
+  <h2>Base 2 · Quimper — Crozon &amp; Cornouaille (Fri 14 – Tue 18 Aug)</h2>
   <p class="sub">"Land's end": turquoise coves, France's prettiest villages, and the Filets Bleus festival window.</p>
   <div class="searchbar"><input type="search" placeholder="Filter attractions…" oninput="filterCards(this)"></div>
   <div class="grid" data-region="west"></div>
@@ -147,7 +179,7 @@
 </section>
 
 <section class="page" id="page-south">
-  <h2>Base 4 · Gulf of Morbihan (Aug 19–22)</h2>
+  <h2>Base 1 · Vannes &amp; the Gulf of Morbihan (Sun 9 – Fri 14 Aug)</h2>
   <p class="sub">Warmest, calmest water in Brittany (~4 m tides vs 13 m up north), UNESCO megaliths, and the best family castle.</p>
   <div class="searchbar"><input type="search" placeholder="Filter attractions…" oninput="filterCards(this)"></div>
   <div class="grid" data-region="south"></div>
@@ -155,34 +187,138 @@
 </section>
 
 <section class="page" id="page-nantes">
-  <h2>Nantes bookend (arrival Aug 6 · final night Aug 22–23)</h2>
+  <h2>Nantes bookends (Thu 6 – Sun 9 Aug · final night Sat 22 – Sun 23 Aug)</h2>
   <p class="sub">Technically Loire-Atlantique, emotionally Brittany. Le Voyage à Nantes art trail ("La Terre" edition) runs Jul 4 – Sep 6, 2026 along the 22 km green line.</p>
+
+  <div class="subnav" id="nantes-subnav">
+    <button data-sub="attractions" class="active">🐘 Attractions</button>
+    <button data-sub="food">🥞 Food</button>
+  </div>
+
+  <div class="subpage active" id="nantes-sub-attractions">
   <div class="searchbar"><input type="search" placeholder="Filter attractions…" oninput="filterCards(this)"></div>
   <div class="grid" data-region="nantes"></div>
-  <div class="callout"><b>Worth it? The Pass Nantes</b> — a 24–48 h city pass (~€26–35) bundling Les Machines de l'île, Château des ducs de Bretagne, several museums, an Erdre/Loire cruise, city transport (including the airport shuttle) and even the Nantes–Clisson TER train. If you're packing a full city day plus a Clisson side-trip into your 3 Nantes nights, it usually pays for itself — buy online at levoyageanantes.fr to skip ticket queues.</div>
-  <div class="callout"><b>Lunch picks from the Nantes guide</b> (by green-line stop): <b>Jardin des Plantes</b> — Café de l'Orangerie (terrace inside the garden by the playground, ~€21–25 menu) or quicker Café des Plantes (~€12–16). <b>Bouffay/château</b> — Le Loup, le Renard et la Galette (rated Nantes' best crêperie, lunch menu €14/kids €11, no reservations — arrive by 12:00) or Crêperie Sainte-Croix (Nantes' oldest, since 1948, high chairs & warmed baby food, ~€12–18) or Barapom (galettes served in paper cones, ~€10 formula, fun for kids). <b>By the Machines</b> — La Grue Jaune (formulas €13.90–20, kids' menu €9.50, board games) or Magmaa Food Hall (9 kitchens + dedicated kids' area, ~€10–15). <b>Jardin Extraordinaire</b> — Krampouezh Naoned (cheap, excellent, cash-only takeaway galettes, closed weekends) or, on weekends, Le Bistrot de Mr Jules on the Butte (2-course €12.50, kids' menu €8.50). Pont Anne-de-Bretagne is closed to cars until Nov 2026 but <b>open to pedestrians and cyclists throughout</b> — the walk to the Machines works all summer.</div>
+  <div class="callout"><b>Worth it? The Pass Nantes</b> — a city pass — <b>2026: 24h €30, 48h €40, 72h €49; reduced child 4–17 €20/€26/€31; family pass (2 adults + 2 children) 48h €106</b> — bundling Les Machines de l'île, Château des ducs de Bretagne, several museums, an Erdre/Loire cruise, city transport (including the airport shuttle) and even the Nantes–Clisson TER train. If you're packing a full city day plus a Clisson side-trip into your 3 Nantes nights, it usually pays for itself — buy online at levoyageanantes.fr to skip ticket queues.</div>
+  </div>
+
+  <div class="subpage" id="nantes-sub-food">
+  <div class="callout"><b>Lunch picks from the Nantes guide</b> (by green-line stop): <b>Jardin des Plantes</b> — Café de l'Orangerie (terrace inside the garden by the playground, ~€21–25 menu) or quicker Café des Plantes (~€12–16). <b>Bouffay/château</b> — Le Loup, le Renard et la Galette (rated Nantes' best crêperie, lunch menu €14/kids €11, no reservations — arrive by 12:00) or Crêperie Sainte-Croix (Nantes' oldest, since 1948; 2026 lunch formula €13.50, kids' menu €12, high chairs & warmed baby food, closed Sunday) or Barapom (galettes served in paper cones, ~€10 formula, fun for kids). <b>By the Machines</b> — La Grue Jaune (formulas €13.90–20, kids' menu €9.50, board games) or Magmaa Food Hall (9 kitchens + dedicated kids' area, ~€10–15). <b>Jardin Extraordinaire</b> — Krampouezh Naoned (cheap, excellent, cash-only takeaway galettes, closed weekends) or Le Bistrot de Mr Jules on the Butte (2-course €12.50, kids' menu €8.50) — <b>weekday lunches only, closed Saturday</b>, so at a weekend fall back to Magmaa or Café des Plantes. Pont Anne-de-Bretagne is closed to cars until Nov 2026 but <b>open to pedestrians and cyclists throughout</b> — the walk to the Machines works all summer.</div>
+  <div class="callout"><b>Nantes dinner picks &amp; extras:</b> <b>Le P'tit Tonneau</b> (Decré–Cathédrale, steps from the château) — classic bistro, try the curé pané (baked cheese), andouillette or roast camembert, finish with gâteau nantais; ~€25–30/person, book ahead. <b>Le Homard Frites</b> (same area) — small, well-rated seafood spot for a one-off lobster/moules night, ~€25–30/person, reserve. <b>Les Chants d'Avril</b> (rue Fouré/Champ-de-Mars) — farm-to-table bistro on Les Tables de Nantes' list; go for the €19–22.50 lunch formula rather than the pricier dinner menu, and book ahead. <b>Crêperie Chez Cannelle</b> (Île de Nantes, near rue Fouré) — relaxed family crêperie doing breakfast through dinner with a terrace and high chairs, galettes from ~€7.50–9, good backup near Les Machines. For a casual bite by the Loire during the festival, <b>La Cantine du Voyage</b> (7/7 11:00–00:00 through 30 Aug) is an easygoing canteen-style option — plat + drink from €12, kids' menu from €10, no bookings.</div>
+
+  <h3 style="margin:22px 0 4px">📍 Nantes restaurants on the map</h3>
+  <p class="sub" style="margin-top:0">Tap a name to open it in Google Maps. Photos below are representative dishes (from Wikimedia Commons), not photos of the actual venue.</p>
+  <div class="grid" id="nantes-restaurants">
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Loup%2C%20le%20Renard%20et%20la%20Galette%2C%2019%20rue%20de%20la%20Juiverie%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">Le Loup, le Renard et la Galette ↗</a></h3>
+      <p>Rated Nantes' best crêperie. Galettes ~€9.50–10, lunch menu ~€14. <b>No reservations</b> — arrive by 12:00. Closed Sunday; a second branch has opened on rue de la Baclerie.</p>
+      <div class="facts"><span>Bouffay</span><span>19 rue de la Juiverie</span><span>Mon–Sat · closed Sun</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Cr%C3%AAperie%20Sainte-Croix%2C%2011%20rue%20Sainte-Croix%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">Crêperie Sainte-Croix ↗</a></h3>
+      <p>Nantes' oldest crêperie (1948), renovated 2021. <b>2026 prices: lunch formula €13.50, kids' menu €12, galette complète €13.90</b> (evening formula €27.90). High chairs &amp; warmed baby food. Closed Sunday.</p>
+      <div class="facts"><span>Bouffay</span><span>11 rue Sainte-Croix</span><span>Mon–Sat · closed Sun</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Barapom%20Bouffay%2C%2017%20rue%20de%20la%20Juiverie%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">Barapom — Bouffay ↗</a></h3>
+      <p>Galettes and crêpes served in cones, no cutlery. Sunny terrace, kids welcome; currently −20% à la carte when booked via TheFork.</p>
+      <div class="facts"><span>Bouffay</span><span>17 rue de la Juiverie</span><span>7/7 lunch &amp; dinner</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Cr%C3%AAperie%20Chez%20Cannelle%2C%204%20rue%20%C3%89mile%20Masson%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">Crêperie Chez Cannelle ↗</a></h3>
+      <p>Relaxed family crêperie on Île de Nantes. <b>Lunch only Mon–Wed (10:00–14:30); dinner served Thu–Sat.</b> Galettes ~€7.50–9, terrace, high chairs.</p>
+      <div class="facts"><span>Île de Nantes</span><span>4 rue Émile Masson</span><span>Daily 10:00–14:00 · +dinner Thu–Sat · closed Sun</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20Grue%20Jaune%2C%2016%20mail%20des%20Chantiers%2C%2044200%20Nantes%2C%20France" target="_blank" rel="noopener">La Grue Jaune ↗</a></h3>
+      <p>Café-crêperie-boutique by the yellow Titan crane, near Les Machines. Formulas €13.90/16.90/20, kids' menu €9.50, board games. <b>Daytime only — closes ~19:00, closed Sun–Mon</b>, so it's a lunch/goûter stop, not dinner.</p>
+      <div class="facts"><span>Île de Nantes</span><span>16 mail des Chantiers</span><span>Tue–Sat 10:00–19:00 · daytime only</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Krampouezh%20Naoned%2C%204%20rue%20de%20l%27Hermitage%2C%2044100%20Nantes%2C%20France" target="_blank" rel="noopener">Krampouezh Naoned ↗</a></h3>
+      <p>Tiny takeaway run by crêpier Bruno Le Borgne — widely called the best galettes in Nantes; trio ~€10–13. <b>Cash or cheque only, no card</b>, and it shuts at 19:30 sharp. Picnic in the Jardin Extraordinaire. Closed weekends.</p>
+      <div class="facts"><span>Bas-Chantenay</span><span>4 rue de l'Hermitage</span><span>Weekdays, closes 19:30 · cash only</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>☕</span><img alt="Croissants" loading="lazy" src="photos/Croissants au beurre (18953292873).jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Croissants au beurre (18953292873).jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9%20de%20l%27Orangerie%2C%2015%20rue%20Gambetta%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">Café de l'Orangerie ↗</a></h3>
+      <p>Terrace inside the Jardin des Plantes overlooking the 19th-c. glasshouses and the playground. Local/organic market cooking, ~€21–25; listed in Les Tables de Nantes 2026/27. <b>Open every day 10:00–18:30, including Sunday</b> — it runs to the garden's closing time, so it's breakfast, lunch and salon de thé, not dinner. Book — the terrace tables go first.</p>
+      <div class="facts"><span>Jardin des Plantes</span><span>15 rue Gambetta</span><span>Daily 10:00–18:30, incl. Sunday</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>☕</span><img alt="Croissants" loading="lazy" src="photos/Croissants au beurre (18953292873).jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Croissants au beurre (18953292873).jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9%20des%20Plantes%2C%2024%20boulevard%20de%20Stalingrad%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">Café des Plantes ↗</a></h3>
+      <p>Brasserie directly opposite the station's north exit, ~€12–16. <b>Open every day 7:00–22:00, service continu</b> — the reliable fallback when everything else is shut.</p>
+      <div class="facts"><span>Gare/Jardin des Plantes</span><span>24 bd de Stalingrad</span><span>Daily 7:00–22:00</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🍲</span></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Magmaa%20Food%20Hall%2C%2015%20rue%20La%20Noue%20Bras%20de%20Fer%2C%2044200%20Nantes%2C%20France" target="_blank" rel="noopener">Magmaa Food Hall ↗</a></h3>
+      <p>9 independent kitchens plus a bar and a kids' area, near Les Machines. Dishes ~€10–15. <b>Open 7/7</b> (Mon lunch only, otherwise to ~23:00) — the safest Sunday option on the island.</p>
+      <div class="facts"><span>Île de Nantes</span><span>15 rue La Noue Bras de Fer</span><span>7/7 · Mon lunch only</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🥩</span><img alt="Steak frites" loading="lazy" src="photos/Steak frites - Boston, Massachusetts.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Steak frites - Boston, Massachusetts.jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Bistrot%20de%20Mr%20Jules%2C%2011%20avenue%20Sainte-Anne%2C%2044100%20Nantes%2C%20France" target="_blank" rel="noopener">Le Bistrot de Mr Jules ↗</a></h3>
+      <p>Neighbourhood bistrot on the Butte Sainte-Anne. Bavette-frites, 2-course €12.50, 3-course €14, plat du jour €9.50, kids' menu €8.50. <b>Weekday lunches only — closed Saturday, and evenings are groups-only by reservation.</b></p>
+      <div class="facts"><span>Bas-Chantenay</span><span>11 avenue Sainte-Anne</span><span>Weekday LUNCH only · closed Sat</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🧀</span><img alt="Gâteau nantais" loading="lazy" src="photos/Gâteau nantais 03.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Gâteau nantais 03.jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20P%27tit%20Tonneau%2C%204%20all%C3%A9e%20d%27Erdre%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">Le P'tit Tonneau ↗</a></h3>
+      <p>Classic bistro near the Erdre and cours des 50-Otages: curé nantais, andouillette, roast camembert, homemade gâteau nantais. ~€25–30/person. Lunch Tue–Sat 12:00–14:00, dinner from 19:30 Wed–Sat; <b>closed Sun–Mon, book ahead</b>. High chairs available.</p>
+      <div class="facts"><span>Decré–Cathédrale</span><span>4 allée d'Erdre</span><span>Lunch Tue–Sat · dinner Wed–Sat</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🦞</span><img alt="Seafood platter" loading="lazy" src="photos/Plateau de fruits de mer - Homards et lagoustines.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Plateau de fruits de mer - Homards et lagoustines.jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Le%20Homard%20Frites%2C%2016%20rue%20Saint-L%C3%A9onard%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">Le Homard Frites ↗</a></h3>
+      <p>Small spot doing Breton blue lobster with unlimited homemade frites. <b>Tue–Sat 12:00–13:30 &amp; 19:00–21:30, Sunday lunch only, closed Monday</b> — the two sittings are short, so reserve.</p>
+      <div class="facts"><span>Decré–Cathédrale</span><span>16 rue Saint-Léonard</span><span>Tue–Sat 12:00–13:30 &amp; 19:00–21:30 · Sun lunch</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🌿</span></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Les%20Chants%20d%27Avril%2C%202%20rue%20La%C3%ABnnec%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">Les Chants d'Avril ↗</a></h3>
+      <p>Farm-to-table bistro (Michelin-listed, "menu mystère") on Les Tables de Nantes' list. <b>Lunch Mon–Fri only; dinner Thursday and Friday only — closed all weekend.</b> Take the €19–22.50 lunch formula and book ahead; confirm they aren't on August closure.</p>
+      <div class="facts"><span>Champ-de-Mars</span><span>2 rue Laënnec</span><span>Lunch Mon–Fri · dinner Thu &amp; Fri only</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🍗</span><img alt="Roast chicken and fries" loading="lazy" src="photos/Roasted chicken and french fries - La Petite Plage 2025-03-25.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Roasted chicken and french fries - La Petite Plage 2025-03-25.jpg?width=800'"></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20Cantine%20du%20Voyage%2C%2020%20quai%20des%20Antilles%2C%2044200%20Nantes%2C%20France" target="_blank" rel="noopener">La Cantine du Voyage ↗</a></h3>
+      <p>Easygoing canteen by the Loire under agricultural greenhouses, with a potager, playground, pétanque and babyfoot. <b>Open 7/7 11:00–00:00 through 30 August 2026</b> (season runs 2 Apr – 25 Oct). Plat + drink from €12, with dessert €15, kids' menu (under 10) from €10. <b>No reservations for private guests</b> — just turn up.</p>
+      <div class="facts"><span>Île de Nantes</span><span>20 quai des Antilles</span><span>7/7 11:00–00:00 (16 Jun–30 Aug)</span><span class="mapl">📍 Maps</span></div></div></article>
+
+
+    <article class="card restaurant-card"><div class="ph"><span>🦪</span></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20Cigale%2C%204%20place%20Graslin%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">La Cigale ↗</a></h3>
+      <p>Nantes' 1895 Art Nouveau brasserie — a listed monument of tiles, mirrors and painted ceilings, and the city's single most famous room. Oysters, knife-cut steak tartare, profiteroles. Menus €25.90 (2 courses) / €30 (3), Sunday menu €37. <b>Open 7 days, 7:30–00:30</b> — the reliable Sunday-and-August answer, and worth it for a 10-year-old just to see the ceiling. Book.</p>
+      <div class="facts"><span>Graslin</span><span>4 place Graslin</span><span>7/7 7:30–00:30</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🍔</span></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Bioburger%2C%205%20boulevard%20L%C3%A9on%20Bureau%2C%2044200%20Nantes%2C%20France" target="_blank" rel="noopener">Bioburger Île de Nantes ↗</a></h3>
+      <p>Organic burger place a few metres from the Machines — menu ~€14.90, kids' menu with beef, chicken or veggie option plus homemade fries and an ice cream. Big quiet terrace. The pragmatic choice when the elephant queue has eaten your lunch hour.</p>
+      <div class="facts"><span>Île de Nantes</span><span>5 bd Léon Bureau</span><span>Open daily</span><span class="mapl">📍 Maps</span></div></div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🎲</span></div>
+      <div class="body"><h3><a href="https://www.google.com/maps/search/?api=1&amp;query=La%20R%C3%A9cr%C3%A9%2C%205%20rue%20Baron%2C%2044000%20Nantes%2C%20France" target="_blank" rel="noopener">La Récré ↗</a></h3>
+      <p>Home-cooked food in a room full of vintage French toys and games, with a supervised games loft upstairs (€10 per group, proceeds to a school in Kenya) and a giant kermesse once a week. Aimed squarely at families. <b>Closed Sunday and Monday</b>; Tue lunch only.</p>
+      <div class="facts"><span>Olivettes</span><span>5 rue Baron</span><span>Wed–Fri 12:00–14:30 &amp; 19:00–22:30 · Sat eve</span><span class="mapl">📍 Maps</span></div></div></article>
+
+  </div>
+  </div>
 </section>
 
 <!-- ============ FOOD ============ -->
 <section class="page" id="page-food">
   <h2>Eat like a Breton</h2>
   <div class="grid">
-    <article class="card food-card"><div class="ph"><span>🥞</span><img alt="Galette bretonne" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800"></div>
+    <article class="card food-card"><div class="ph"><span>🥞</span><img alt="Galette bretonne" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
       <div class="body"><h3>Galette &amp; crêpe</h3><p>Savoury buckwheat galette (order a <i>complète</i>), sweet wheat crêpe for dessert.</p>
       <div class="facts"><span>€8–12 galette</span><span>€3–7 crêpe</span></div></div></article>
-    <article class="card food-card"><div class="ph"><span>🧈</span><img alt="Kouign-amann" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Kouign_amann.jpg?width=800"></div>
+    <article class="card food-card"><div class="ph"><span>🧈</span><img alt="Kouign-amann" loading="lazy" src="photos/Kouign_amann.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Kouign_amann.jpg?width=800'"></div>
       <div class="body"><h3>Kouign-amann</h3><p>Caramelised butter pastry, born in Douarnenez — try it fresh from a Finistère bakery.</p>
       <div class="facts"><span>€2.50–4/slice</span><span>Finistère</span></div></div></article>
-    <article class="card food-card"><div class="ph"><span>🦪</span><img alt="Cancale oysters" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Cancale_-_Hu%C3%AEtres_21.jpg?width=800"></div>
+    <article class="card food-card"><div class="ph"><span>🦪</span><img alt="Cancale oysters" loading="lazy" src="photos/Cancale_-_Hu%C3%AEtres_21.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cancale_-_Hu%C3%AEtres_21.jpg?width=800'"></div>
       <div class="body"><h3>Cancale oysters</h3><p>Eaten straight off the market stall, shells tossed on the beach below.</p>
       <div class="facts"><span>€5–7/dozen</span><span>Base 1</span></div></div></article>
-    <article class="card food-card"><div class="ph"><span>🍎</span><img alt="Bolée of cider" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Bol%C3%A9e_de_cidre_au_Bouchon_Breton_(La_Valbonne).jpg?width=800"></div>
+    <article class="card food-card"><div class="ph"><span>🍎</span><img alt="Bolée of cider" loading="lazy" src="photos/Bol%C3%A9e_de_cidre_au_Bouchon_Breton_(La_Valbonne).jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Bol%C3%A9e_de_cidre_au_Bouchon_Breton_(La_Valbonne).jpg?width=800'"></div>
       <div class="body"><h3>Cidre</h3><p>Served in a ceramic <i>bolée</i> alongside every galette — brut, demi-sec or doux.</p>
       <div class="facts"><span>€3–5/bolée</span><span>Adults</span></div></div></article>
-    <article class="card food-card"><div class="ph"><span>🍲</span><img alt="Kig ha farz" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Kig-ha-farz.jpg?width=800"></div>
+    <article class="card food-card"><div class="ph"><span>🍲</span><img alt="Kig ha farz" loading="lazy" src="photos/Kig-ha-farz.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Kig-ha-farz.jpg?width=800'"></div>
       <div class="body"><h3>Kig ha farz</h3><p>North-Finistère pot-au-feu: meat and vegetables with buckwheat "farz" in a cloth sack.</p>
       <div class="facts"><span>€18–25</span><span>Léon region</span></div></div></article>
-    <article class="card food-card"><div class="ph"><span>🍬</span><img alt="Caramel au beurre salé" loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Caramel_au_beurre_sal%C3%A9_02.jpg?width=800"></div>
+    <article class="card food-card"><div class="ph"><span>🍬</span><img alt="Caramel au beurre salé" loading="lazy" src="photos/Caramel_au_beurre_sal%C3%A9_02.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Caramel_au_beurre_sal%C3%A9_02.jpg?width=800'"></div>
       <div class="body"><h3>Caramel au beurre salé</h3><p>Salted-butter caramel — on crêpes, in sweets, as ice cream. Bordier butter is the local icon.</p>
       <div class="facts"><span>Everywhere</span><span>Take-home gift</span></div></div></article>
   </div>
@@ -238,7 +374,7 @@
   <div class="cols">
     <div class="panel"><h3>🚗 The car</h3>
       <ul class="tight">
-        <li>Rent at Nantes airport for the whole trip. <b>Automatics are scarce — reserve one explicitly.</b> Compact is best for village lanes.</li>
+        <li><b>Booked: Keddy/Rentalcars, Sixt counter at Gare de Nantes</b> — pick-up 17:30 Sun 9 Aug, drop-off 17:30 Sat 22 Aug (13 days). Not the airport. <b>Automatics are scarce — confirm yours is reserved explicitly.</b> Compact is best for village lanes.</li>
         <li><b>Brittany has zero toll roads</b> — free 110 km/h expressways (N165, N137, N12) link everything. A84 to Mont-Saint-Michel: also free.</li>
         <li><b>Child seat:</b> under-10s must ride in the back in a booster. At 10 a normal belt is legal — but the booster is still the safe call. Order with the car.</li>
         <li><i>Priorité à droite</i> at unmarked junctions; 0.5 g/L alcohol limit; hands-free only (earbuds banned).</li>
@@ -284,7 +420,7 @@
   <h2 style="font-size:1rem">Now</h2>
   <ul class="tight">
     <li>☐ 5 lodgings (kitchen + parking; ~€100–150/night as gîte/apartment/mobile-home; avoid Saint-Malo intra-muros &amp; beachfront Carnac for budget)</li>
-    <li>☐ Car at Nantes airport (automatic if needed; booster seat)</li>
+    <li>☐ Car — Keddy/Sixt, Gare de Nantes, 9 Aug 17:30 → 22 Aug 17:30 (automatic if needed; booster seat for a 10-year-old)</li>
     <li>☐ Crit'Air sticker — certificat-air.gouv.fr (€3.85)</li>
   </ul>
   <h2 style="font-size:1rem">~1 month out</h2>
@@ -338,14 +474,19 @@ const A = [
  ["south",null,"Forêt Adrénaline & Branféré","fr:Parc animalier et botanique de Branféré","🐒","Two active-kid options: Forêt Adrénaline Carnac tree-top courses (21 routes, 45 ziplines, Junior tier for age 10) and Branféré — 1,500 animals roaming semi-free + 6,000 m² of canopy nets.",["Ropes €18 junior · Branféré ~€29.50 / €22","Half day each"], "Both need August slots booked online. Branféré ticket includes the Parcabout nets.",1],
  ["south","gem","Brocéliande forest","fr:Forêt de Paimpont","🧙","King Arthur & Merlin country: 'La Porte des Secrets' immersive show at Paimpont, the Golden Tree in the Val sans Retour, Merlin's tomb, costumed storyteller walks daily in summer.",["Show ticketed · trails free","Full day"], "Sits perfectly on the final Vannes → Nantes transfer (Aug 22). Grab a trail map at the Paimpont tourist office.",0],
 
- ["nantes","must","Les Machines de l'île","en:Machines of the Isle of Nantes","🐘","The 12-m, 49-passenger Grand Éléphant, the three-storey Marine Worlds carousel and the machine gallery. The single best kid-hour in Nantes.",["€9.50 / €8 each · combo €17 / €9.50","2–3 h"], "The elephant ride sells out — pre-book. Note tram line 1 works near Pont Anne-de-Bretagne this summer; the bridge stays open on foot.",1],
- ["nantes",null,"Château des ducs de Bretagne","en:Château des ducs de Bretagne","🏰","Moated castle of Anne de Bretagne: ramparts and courtyard free; inside, the 32-room Nantes history museum.",["Walls free · museum €9, under-18 free","1.5–2 h"], "Jul–Aug open daily 10–19. The free rampart circuit alone is worth 45 min.",0],
+ ["nantes","must","Les Machines de l'île","en:Machines of the Isle of Nantes","🐘","The 12-m, 49-passenger Grand Éléphant, the three-storey Marine Worlds carousel and the machine gallery. The single best kid-hour in Nantes.",["2026: €12 / €8 (4–12) per activity · 2 activities €20 / €14 · all three €29 / €21 · family −15%","2–3 h"], "<b>2026 prices, from the official tariff page.</b> Elephant departures 23 Jun–30 Aug run 10:15–18:45; only some slots are bookable online, so book the moment your dates are fixed and aim for the 10:15. In the school holidays the Carrousel runs in <i>mode forain</i> — children actually ride the creatures (extra turn €3). Free with the Pass Nantes except the elephant. <b>In a heatwave the Galerie and Carrousel can shut at short notice and elephant rides are cancelled</b> — have a plan B. Tram line 1 is suspended mid-June to late August 2026; replacement buses run and Pont Anne-de-Bretagne stays open on foot.",1],
+ ["nantes",null,"Château des ducs de Bretagne","en:Château des ducs de Bretagne","🏰","Moated castle of Anne de Bretagne: ramparts and courtyard free; inside, the 32-room Nantes history museum.",["Courtyard, moat gardens &amp; ramparts free · museum €9, under-18 free","1.5–2 h"], "Jul–Aug the museum opens daily 10:00–19:00 (last tickets 18:30); the rest of the year it shuts Mondays. The 500-m rampart circuit is free and worth 45 min on its own. <b>Note the first-Sunday-free rule does NOT apply in July or August</b> — but under-18s are always free. Even free entries must book a timeslot. A €15 Pass musées covers this plus the Musée d'arts, Musée Jules Verne and Le Chronographe for a year.",0],
  ["nantes",null,"Jardin des Plantes & the green line","fr:Jardin des plantes de Nantes","🌱","Historic botanical garden with playful Ponti sculptures, opposite the station — then follow the painted green line (22 km, 'La Terre' edition art trail, Jul 4–Sep 6).",["Free","1–2 h"], "Ideal soft-landing on arrival day: garden + Bouffay quarter + ice cream.",0],
  ["nantes",null,"Sea day option: Guérande & La Baule","en:Guérande","🧂","If you add a coastal day near Nantes: medieval walled Guérande + its salt marshes, then the 9-km arc of La Baule — the warmest 'top' beach of the whole trip (~18.7 °C).",["~1 h from Nantes","Full day"], "Lifeguarded, gentle, kids' clubs; parking fills by 10:00.",0],
- ["nantes","gem","Planète Sauvage","fr:Planète sauvage","🦁","France's largest safari park: a 10-km self-drive safari loop — the longest in France — through 85 ha and 15 'plains' with lions, rhinos, giraffes and zebras, right from your own car, plus 5 walking zones and a 'Sea World' with dolphins (the last French park to keep them).",["€24.90–29.90 · €19–23 (3–12)","Half–full day"], "~25–30 min from Nantes — a strong 'day 3' filler for the Nantes base. Buy discounted tickets at Destination Pornic tourist offices; open 9:00–19:30 in high season (27 Jul–21 Aug).",1],
- ["nantes","gem","Clisson & Château de Clisson","fr:Château de Clisson","🍇","A pocket of 'Italian' Brittany — ochre roofs, arcades and a river promenade — beneath the romantic 12th–15th-c. ruins of a castle that once guarded the duchy's border.",["€6 / €3 · free with Pass Nantes","2–3 h + town"], "~35 min from Nantes (or an 18-min TER train) — go in the morning, picnic by the Sèvre Nantaise river after the ruins.",0],
+ ["nantes","gem","Planète Sauvage","fr:Planète sauvage","🦁","France's largest safari park: a 10-km self-drive safari loop — the longest in France — through 85 ha and 15 'plains' with lions, rhinos, giraffes and zebras, right from your own car, plus walking zones and the <b>Cité Marine</b>, home to the last eleven dolphins in France.",["2026: adult from €29.50 · child 3–12 €22 on the gate, €19 booked online · under-3 free","Half–full day"], "~25–30 min from Nantes; 2026 season 14 Feb–29 Nov. Book online — the child ticket drops to €19 and web-only promos go lower still. The dolphins are shown as a <b>pedagogical presentation, not a show</b>, and France's ban on cetacean performances and public contact takes effect 2 December 2026, so summer 2026 is the last under the current rules; the park keeps its animals under a research exemption, which some visitors will want to weigh. Optional extras: Raid 4×4 guided truck safari €15, Rencontre avec les dauphins €18. Arrive early for the Cité Marine — the stands fill.",1],
+ ["nantes","gem","Clisson & Château de Clisson","fr:Château de Clisson","🍇","A pocket of 'Italian' Brittany — ochre roofs, arcades and a river promenade — beneath the romantic 12th–15th-c. ruins of a castle that once guarded the duchy's border.",["€6 / €3 — <b>free for under-26s</b>, so your 10-year-old pays nothing · free with Pass Nantes","2–3 h + town"], "~35 min by car, or an 18-min TER (the Nantes–Clisson return is bundled into the Pass Nantes). Guided tours run 1 Jul–30 Aug, €8/€5, and are pitched at children as much as adults. Go in the morning, then picnic by the Sèvre Nantaise. Free parking nearby, and the Garenne Lemot park across the river — Greek temples and artificial grottoes, free — makes a good second half.",0],
  ["nantes","gem","Pornic & Château de Pornic","fr:Pornic","⚓","An Atlantic harbour town with a turreted 10th-century castle over the port, a botanical park and beaches — a lively alternative to the Guérande/La Baule day.",["Town free · castle tours ~€7","Half–full day"], "~45–60 min from Nantes. The private castle only opens for scheduled tours — check ahead. Walk the Corniche de Gourmalon for the classic view back at the towers.",0],
- ["nantes","gem","Puy du Fou","fr:Puy du Fou","🏟️","A theme park built entirely on live spectacle instead of rides — gladiators, Vikings, knights' tournaments and, after dark, the famous Cinéscénie — regularly rated among the world's best theme parks.",["~€45 adult / €35 child (2025 rate)","Full day, 8–10 h"], "~1.5 h from Nantes. Needs a full day of its own and, for the night show, booking months ahead — think of it as swapping out the Nantes day-3 filler rather than adding a day.",1]
+ ["nantes","gem","Puy du Fou","fr:Puy du Fou","🏟️","A theme park built entirely on live spectacle instead of rides — gladiators, Vikings, knights' tournaments and, after dark, the famous Cinéscénie — regularly rated among the world's best theme parks.",["2026: €44.65 adult / €32.30 child (3–11) booked 72 h+ ahead — €56.05 / €40.85 inside 72 h or at the gate","Full day, 8–10 h"], "~1.5 h from Nantes. <b>Booking more than 72 hours ahead saves about €24 for the three of you</b>, so decide early. The Cinéscénie night show is a separate ticket (€33–57 by seating block) with only 28 performances a season and needs booking months out. Needs a full day of its own — treat it as replacing the Nantes day-3 filler, not adding a day.",1],
+ ["nantes","gem","Muséum d'histoire naturelle","fr:Muséum d'histoire naturelle de Nantes","🦕","One of France's major natural history museums, recently renovated: a colossal whale skeleton hanging over the main hall, a live vivarium of snakes and lizards, meteorites you can touch, and a dedicated hands-on children's section.",["~€4 · under-18 free","1.5–2 h"], "The best wet-weather insurance in Nantes and ten minutes from the Jardin des Plantes — pair the two on your arrival day. Free for under-18s year-round.",0],
+ ["nantes","gem","Île de Versailles — the Japanese garden","fr:Île de Versailles","🎏","A 1.7-ha artificial island in the Erdre laid out as a Japanese garden since 1983: koi ponds, stepping stones, waterfalls, bamboo, a tea house, and a playground aimed at 6–12s. Electric boats and kayaks for hire in summer.",["Free","45 min–2 h"], "<b>Served by tram line 2, which is unaffected by the summer 2026 line-1 works</b> — that alone makes it a smart pick during your stay. Combine with the Erdre boat cruise leaving from Quai de Versailles.",0],
+ ["nantes","gem","Planétarium de Nantes","fr:Planétarium de Nantes","🪐","Dome projection shows built around age bands, including 30-minute junior sessions — on the Butte Sainte-Anne, five minutes from the Jardin Extraordinaire.",["€3 under-18","45 min"], "Sessions are graded by age and some are not advised under 8; no child under 3 admitted at all. <b>Book online — summer sessions sell out.</b> Slots neatly into the Butte Sainte-Anne half-day with Krampouezh Naoned and the Musée Jules Verne.",0],
+ ["nantes","gem","Trentemoult by Navibus","fr:Trentemoult","🎨","A former fishermen's village of pastel-painted houses and narrow lanes on the south bank — reached by a short river ferry that children treat as the main event.",["Navibus included in a normal transport ticket","Half day"], "The Navibus crossing takes about 10 minutes and runs every 20. Rue du Chapeau-Rouge is the prettiest street. Combine with the Jardin Extraordinaire, the quarry garden with the waterfall, on the same bank.",0],
+ ["nantes",null,"Le Nid, Tour Bretagne","fr:Tour Bretagne","🐦","A bar on the 32nd floor of Nantes' one brutalist tower, built around a giant white resin stork whose body is the bench — Jean Jullien's joke with the best 360° view in the city attached.",["~€5 to go up","45 min"], "Open roughly 10:00–19:00. Lemonade for the child, Muscadet for the adults, the whole itinerary laid out below you — a good orientation stop on arrival day.",0]
 ];
 
 // Wikimedia Commons photos per card: first entry is primary, second is backup.
@@ -381,6 +522,11 @@ const IMG = {
  "Forêt Adrénaline & Branféré": ["Parc_animalier_et_botanique_de_Branféré_girafe_1.JPG"],
  "Brocéliande forest": ["Val_sans_retour_-_panoramio.jpg","Tombeau_de_Merlin,_Paimpont,_France.jpg"],
  "Les Machines de l'île": ["Nantes_IdM_elephant.jpg"],
+ "Planétarium de Nantes": ["PlanetariumNantes20090927.jpg"],
+ "Muséum d'histoire naturelle": ["Nantes - Muséum d'histoire naturelle - 04.jpg","Nantes - Muséum d'histoire naturelle - 02.jpg"],
+ "Île de Versailles — the Japanese garden": ["Nantes - île de Versailles (01).JPG","Île Versailles - Nantes (FR44) - 2022-09-19 - 6.jpg"],
+ "Trentemoult by Navibus": ["Port Trentemoult - Rezé (FR44) - 2022-09-18 - 1.jpg","Façade reine blanche.JPG"],
+ "Le Nid, Tour Bretagne": ["Tour Bretagne Nantes observation deck.JPG","Tour Bretagne 10 janv 2015.JPG"],
  "Château des ducs de Bretagne": ["Château_des_ducs_de_Bretagne_-_EDIT.jpg","ChateauDesDucsDeBretagne20090906.jpeg"],
  "Jardin des Plantes & the green line": ["P1040794_Jardin_des_plantes_Nantes.JPG"],
  "Sea day option: Guérande & La Baule": ["Guerande_Tor.jpg","Marais_salants.jpg"],
@@ -532,6 +678,15 @@ nav.addEventListener('click', e=>{
   const b = e.target.closest('button'); if(!b) return;
   nav.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));
   document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+b.dataset.page));
+  window.scrollTo({top:0});
+});
+
+// Nantes sub-tabs (Attractions / Food)
+const nantesSubnav = document.getElementById('nantes-subnav');
+nantesSubnav.addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  nantesSubnav.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));
+  document.getElementById('page-nantes').querySelectorAll('.subpage').forEach(p=>p.classList.toggle('active',p.id==='nantes-sub-'+b.dataset.sub));
   window.scrollTo({top:0});
 });
 
