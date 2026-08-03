@@ -78,6 +78,9 @@
   .card.restaurant-card h3 a{color:var(--sea-d);text-decoration:none}
   .card.restaurant-card h3 a:hover{text-decoration:underline}
   .facts span.mapl{background:#eaf2fb;color:#1a5a96}
+  .facts a.navl{text-decoration:none;display:inline-block;font-size:.74rem;font-weight:600;padding:4px 9px;border-radius:10px}
+  .facts a.gmaps{background:#eaf2fb;color:#1a5a96}
+  .facts a.waze{background:#eef0fb;color:#4a3aa0}
   .modal{position:fixed;inset:0;background:rgba(20,30,36,.6);display:none;z-index:100;padding:26px 12px;overflow-y:auto}
   .modal.open{display:block}
   .mbox{background:#fff;border-radius:16px;max-width:780px;margin:0 auto;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.35)}
@@ -450,37 +453,37 @@
 <script>
 const A = [
  // region, badge(null|'must'|'gem'), title, wiki("lang:Title"), emoji, desc, facts[], tip, book(bool)
- ["north","must","Mont-Saint-Michel","en:Mont-Saint-Michel","⛪","The abbey-island. Park 2.5 km out, free 'Le Passeur' shuttle or a 35-min walk on the bridge. Abbey has ~350 steps; village is free to enter.",["Abbey €11–16 · child free","Half day","Arrive 8:30"], "Book a timed abbey slot online. Crowds peak 11–15h; the back lanes and ramparts up high stay calm.",1],
- ["north","must","Saint-Malo intra-muros","en:Saint-Malo","🏴‍☠️","Corsair city rebuilt stone-by-stone after 1944. Walk the full ramparts loop (~1h, free), cross to Grand Bé and Fort National at low tide.",["Ramparts free","Half day–2 days"], "Kid hits: Étoile du Roy corsair frigate, Bon-Secours seawater pool with diving board, corsair logbook quest (€1 at tourist office).",0],
- ["north",null,"Grand Aquarium Saint-Malo","fr:Grand aquarium de Saint-Malo","🦈","600 species, 360° shark ring, Nautibus submarine ride and Abyssal Descender simulator. One of Brittany's two most-visited paid sites.",["€19.90 / €15.90 (4–12)","2–2.5 h"], "Outside the walls (free parking). Book a slot online — perfect rain card.",1],
- ["north","must","Dinan","en:Dinan","🏘️","Brittany's most intact medieval town: 2.7 km of ramparts (region's longest), 130 half-timbered houses, cobbled Rue du Jerzual down to the river port.",["Castle €8 · kids' tablets","Half day"], "At the castle children can handle replica weapons and try on helmets. Free P+R lots ring the town.",0],
- ["north",null,"Cancale","en:Cancale","🦪","Oyster capital. Eat them from market stalls at the Pointe des Crocs pier for a few euros, shells tossed on the beach below.",["25 min from Saint-Malo","2–3 h"], "Combine with the coast road to Pointe du Grouin.",0],
- ["north",null,"Cap Fréhel & Fort la Latte","fr:Fort la Latte","🏰","70 m pink-sandstone cliffs and a 14th-century clifftop fortress (drawbridge, keep, guided visits in medieval costume in summer).",["Fort €8.50 / €6 (5–12)","Full day with the walk"], "Park free at Fort la Latte and walk the GR34 cliff path (~1h15) to the cape — skips the €3 cape parking.",0],
- ["north",null,"Cobac Parc + Aqua'Fun","fr:Cobac Parc","🎢","Brittany's biggest amusement + water park: 40 unlimited rides, 11 slides, corsair & Celtic-legend theming. Squarely aimed at ages 2–12.",["Combo €26.90 / €24","Full day"], "Online 'Billet Malin' (4+ days ahead) is cheaper. Between Rennes and Saint-Malo — an easy 30-min hop.",1],
- ["north","gem","Saint-Suliac","fr:Saint-Suliac","⚓","One of the 'Plus Beaux Villages de France' on the Rance estuary — 13th-century stone lanes, fishing-village calm, no crowds.",["Free","1–2 h"], "Good evening stroll + crêperie stop from a Dinan/Rance base.",0],
+ ["north","must","Mont-Saint-Michel","en:Mont-Saint-Michel","⛪","The abbey-island. Park 2.5 km out, free 'Le Passeur' shuttle or a 35-min walk on the bridge. Abbey has ~350 steps; village is free to enter.",["Abbey €11–16 · child free","Half day","Arrive 8:30","🚗 45 min from Dinan"], "Book a timed abbey slot online. Crowds peak 11–15h; the back lanes and ramparts up high stay calm.",1],
+ ["north","must","Saint-Malo intra-muros","en:Saint-Malo","🏴‍☠️","Corsair city rebuilt stone-by-stone after 1944. Walk the full ramparts loop (~1h, free), cross to Grand Bé and Fort National at low tide.",["Ramparts free","Half day–2 days","🚗 40 min from Dinan"], "Kid hits: Étoile du Roy corsair frigate, Bon-Secours seawater pool with diving board, corsair logbook quest (€1 at tourist office).",0],
+ ["north",null,"Grand Aquarium Saint-Malo","fr:Grand aquarium de Saint-Malo","🦈","600 species, 360° shark ring, Nautibus submarine ride and Abyssal Descender simulator. One of Brittany's two most-visited paid sites.",["€19.90 / €15.90 (4–12)","2–2.5 h","🚗 25 min from Dinan"], "Outside the walls (free parking). Book a slot online — perfect rain card.",1],
+ ["north","must","Dinan","en:Dinan","🏘️","Brittany's most intact medieval town: 2.7 km of ramparts (region's longest), 130 half-timbered houses, cobbled Rue du Jerzual down to the river port.",["Castle €8 · kids' tablets","Half day","in town — you're based here"], "At the castle children can handle replica weapons and try on helmets. Free P+R lots ring the town.",0],
+ ["north",null,"Cancale","en:Cancale","🦪","Oyster capital. Eat them from market stalls at the Pointe des Crocs pier for a few euros, shells tossed on the beach below.",["25 min from Saint-Malo","2–3 h","🚗 35 min from Dinan"], "Combine with the coast road to Pointe du Grouin.",0],
+ ["north",null,"Cap Fréhel & Fort la Latte","fr:Fort la Latte","🏰","70 m pink-sandstone cliffs and a 14th-century clifftop fortress (drawbridge, keep, guided visits in medieval costume in summer).",["Fort €8.50 / €6 (5–12)","Full day with the walk","🚗 50 min from Dinan"], "Park free at Fort la Latte and walk the GR34 cliff path (~1h15) to the cape — skips the €3 cape parking.",0],
+ ["north",null,"Cobac Parc + Aqua'Fun","fr:Cobac Parc","🎢","Brittany's biggest amusement + water park: 40 unlimited rides, 11 slides, corsair & Celtic-legend theming. Squarely aimed at ages 2–12.",["Combo €26.90 / €24","Full day","🚗 25 min from Dinan"], "Online 'Billet Malin' (4+ days ahead) is cheaper. Between Rennes and Saint-Malo — an easy 30-min hop.",1],
+ ["north","gem","Saint-Suliac","fr:Saint-Suliac","⚓","One of the 'Plus Beaux Villages de France' on the Rance estuary — 13th-century stone lanes, fishing-village calm, no crowds.",["Free","1–2 h","🚗 20 min from Dinan"], "Good evening stroll + crêperie stop from a Dinan/Rance base.",0],
 
- ["pink","must","Ploumanac'h — Sentier des Douaniers","fr:Ploumanac'h","🪨","The famous coastal path through giant pink granite boulders: 4–5 km loop, easy and perfectly 10-year-old-sized. Spot the 'turtle', the 'pancake', 'Napoleon's hat'.",["Free","2–3 h"], "Be there before 10:00 for parking and empty rocks. Mên Ruz lighthouse is the photo.",0],
- ["pink","must","Sept-Îles boat trip","fr:Réserve naturelle nationale des Sept-Îles","🐧","France's largest seabird sanctuary: gannet colony on Rouzic, puffins, and ~50 grey seals. Live commentary from the boat.",["~€22 / €16 (3–12)","2 h"], "Departures from Trestraou beach (Perros-Guirec) or Ploumanac'h in high season. Book ahead in August.",1],
- ["pink",null,"Île de Bréhat","en:Île-de-Bréhat","🌺","Car-free 'island of flowers' — pink granite, mimosas, rental bikes. 10-min ferry from Pointe de l'Arcouest.",["Ferry €11.90 / €10.20 (4–11)","Full day"], "Daily visitor cap (~4,700) on summer weekdays until ~Aug 22 — take a morning boat, early.",1],
- ["pink","gem","Vallée des Saints","fr:Vallée des Saints","🗿","Brittany's 'Easter Island': 150+ monumental granite statues of Breton saints, 3–7 m tall, on a 360° panoramic hill. Kids' riddle trail + treasure hunt.",["Free (parking €9/car)","2–3 h"], "Watch sculptors carving new giants (workshops run May–Oct).",0],
- ["pink","gem","Huelgoat forest","en:Huelgoat","🌳","Mossy boulder chaos on the Silver River, wrapped in Arthur/Merlin legends. Find the 137-ton Trembling Rock — a child can rock it from the right spot.",["Free","2–3 h"], "Grippy shoes; torch for the Devil's Cave. Crêperie La Grotte at the forest entrance.",0],
- ["pink",null,"Trestraou & Saint-Guirec beaches","fr:Perros-Guirec","🏖️","Trestraou: big supervised family beach with paddleboard/sailing schools. Saint-Guirec: sheltered cove facing the Costaérès castle islet.",["Lifeguards Jul–Aug","Flexible"], "This is the 'empty day' base — beach morning, rocks at golden hour.",0],
+ ["pink","must","Ploumanac'h — Sentier des Douaniers","fr:Ploumanac'h","🪨","The famous coastal path through giant pink granite boulders: 4–5 km loop, easy and perfectly 10-year-old-sized. Spot the 'turtle', the 'pancake', 'Napoleon's hat'.",["Free","2–3 h","🚗 1 h 35 from Dinan"], "Be there before 10:00 for parking and empty rocks. Mên Ruz lighthouse is the photo.",0],
+ ["pink","must","Sept-Îles boat trip","fr:Réserve naturelle nationale des Sept-Îles","🐧","France's largest seabird sanctuary: gannet colony on Rouzic, puffins, and ~50 grey seals. Live commentary from the boat.",["~€22 / €16 (3–12)","2 h","🚗 1 h 35 from Dinan"], "Departures from Trestraou beach (Perros-Guirec) or Ploumanac'h in high season. Book ahead in August.",1],
+ ["pink",null,"Île de Bréhat","en:Île-de-Bréhat","🌺","Car-free 'island of flowers' — pink granite, mimosas, rental bikes. 10-min ferry from Pointe de l'Arcouest.",["Ferry €11.90 / €10.20 (4–11)","Full day","🚗 1 h 20 from Dinan"], "Daily visitor cap (~4,700) on summer weekdays until ~Aug 22 — take a morning boat, early.",1],
+ ["pink","gem","Vallée des Saints","fr:Vallée des Saints","🗿","Brittany's 'Easter Island': 150+ monumental granite statues of Breton saints, 3–7 m tall, on a 360° panoramic hill. Kids' riddle trail + treasure hunt.",["Free (parking €9/car)","2–3 h","🚗 1 h 30 from Dinan"], "Watch sculptors carving new giants (workshops run May–Oct).",0],
+ ["pink","gem","Huelgoat forest","en:Huelgoat","🌳","Mossy boulder chaos on the Silver River, wrapped in Arthur/Merlin legends. Find the 137-ton Trembling Rock — a child can rock it from the right spot.",["Free","2–3 h","🚗 1 h 50 from Dinan"], "Grippy shoes; torch for the Devil's Cave. Crêperie La Grotte at the forest entrance.",0],
+ ["pink",null,"Trestraou & Saint-Guirec beaches","fr:Perros-Guirec","🏖️","Trestraou: big supervised family beach with paddleboard/sailing schools. Saint-Guirec: sheltered cove facing the Costaérès castle islet.",["Lifeguards Jul–Aug","Flexible","🚗 1 h 35 from Dinan"], "This is the 'empty day' base — beach morning, rocks at golden hour.",0],
 
- ["west","must","Crozon peninsula","fr:Presqu'île de Crozon","🌅","'Brittany in miniature': Pointe de Pen-Hir cliffs (Tas de Pois stacks), turquoise Île Vierge cove (view from above only — access closed), safe family swimming at Morgat.",["Free","2 days"], "Small car parks — arrive early for beaches and headlands.",0],
- ["west","gem","Îlot des Capucins","fr:Roscanvel","🏯","1848 sea fort on an islet reached by hidden steps and a stone footbridge over the water. Powder rooms, mysterious atmosphere — 'kids adore it, almost nobody knows it'.",["Free","1–2 h"], "In Roscanvel, north side of Crozon. Combine with the Vauban tower at Camaret (UNESCO).",0],
- ["west",null,"Pointe du Raz","en:Pointe du Raz","🌬️","France's dramatic 'land's end' over the Iroise sea, facing Île de Sein. Windy even in August — bring windbreakers.",["Free · parking €8","Half day"], "20–25 min walk from the car park (or €1 shuttle, free under 10).",0],
- ["west","must","Locronan","en:Locronan","🕰️","Finistère's only 'Plus Beau Village': granite houses frozen in the 17th–18th c., a favourite film set. Car-free.",["Parking €4/day","1.5–2 h"], "Strictly a before-10am visit in August — tour buses own the afternoon.",0],
- ["west",null,"Quimper","en:Quimper","⛪","Capital of the Cornouaille: crooked-nave Saint-Corentin cathedral, half-timbered old town, Odet riverbanks, faience pottery (Le Gall butter tour nearby).",["Free · half day","34 crêperies"], "Street parking free 12–2pm and after 5pm. Best rainy-day town in the west.",0],
- ["west","must","Concarneau & Filets Bleus","en:Concarneau","🐟","The Ville Close — a walled town on a harbour island — plus the Filets Bleus festival Aug 12–16 (est. 1905): free concerts, sea-village for kids, 2,000-strong parade Sun Aug 16, 10:30.",["Concerts free · parade €10, under-10 free","Half–full day"], "Festival days: park at the free Gare/Caserne lots or shuttle lots — the centre jams.",0],
- ["west",null,"Océanopolis (Brest)","fr:Océanopolis","🦦","Major ocean-science aquarium — otter trail, tropical pavilion (reopened Jul 2026), Cité des Océanautes for ages 6–12. Mid-renovation: polar pavilion closed until 2027.",["Renovation tariffs — verify","3 h"], "Timed ticket online, ~1 h from Crozon. Your files give three price sets — check oceanopolis.com.",1],
+ ["west","must","Crozon peninsula","fr:Presqu'île de Crozon","🌅","'Brittany in miniature': Pointe de Pen-Hir cliffs (Tas de Pois stacks), turquoise Île Vierge cove (view from above only — access closed), safe family swimming at Morgat.",["Free","2 days","🚗 55 min from Quimper"], "Small car parks — arrive early for beaches and headlands.",0],
+ ["west","gem","Îlot des Capucins","fr:Roscanvel","🏯","1848 sea fort on an islet reached by hidden steps and a stone footbridge over the water. Powder rooms, mysterious atmosphere — 'kids adore it, almost nobody knows it'.",["Free","1–2 h","🚗 1 h 05 from Quimper"], "In Roscanvel, north side of Crozon. Combine with the Vauban tower at Camaret (UNESCO).",0],
+ ["west",null,"Pointe du Raz","en:Pointe du Raz","🌬️","France's dramatic 'land's end' over the Iroise sea, facing Île de Sein. Windy even in August — bring windbreakers.",["Free · parking €8","Half day","🚗 50 min from Quimper"], "20–25 min walk from the car park (or €1 shuttle, free under 10).",0],
+ ["west","must","Locronan","en:Locronan","🕰️","Finistère's only 'Plus Beau Village': granite houses frozen in the 17th–18th c., a favourite film set. Car-free.",["Parking €4/day","1.5–2 h","🚗 20 min from Quimper"], "Strictly a before-10am visit in August — tour buses own the afternoon.",0],
+ ["west",null,"Quimper","en:Quimper","⛪","Capital of the Cornouaille: crooked-nave Saint-Corentin cathedral, half-timbered old town, Odet riverbanks, faience pottery (Le Gall butter tour nearby).",["Free · half day","34 crêperies","in town — you're based here"], "Street parking free 12–2pm and after 5pm. Best rainy-day town in the west.",0],
+ ["west","must","Concarneau & Filets Bleus","en:Concarneau","🐟","The Ville Close — a walled town on a harbour island — plus the Filets Bleus festival Aug 12–16 (est. 1905): free concerts, sea-village for kids, 2,000-strong parade Sun Aug 16, 10:30.",["Concerts free · parade €10, under-10 free","Half–full day","🚗 25 min from Quimper"], "Festival days: park at the free Gare/Caserne lots or shuttle lots — the centre jams.",0],
+ ["west",null,"Océanopolis (Brest)","fr:Océanopolis","🦦","Major ocean-science aquarium — otter trail, tropical pavilion (reopened Jul 2026), Cité des Océanautes for ages 6–12. Mid-renovation: polar pavilion closed until 2027.",["Renovation tariffs — verify","3 h","🚗 45 min from Quimper"], "Timed ticket online, ~1 h from Crozon. Your files give three price sets — check oceanopolis.com.",1],
 
- ["south","must","Carnac alignments","en:Carnac stones","🗿","The world's largest megalith field — ~3,000 menhirs over 4 km, UNESCO-listed July 2025. In August the rows are entered by guided tour only; the outer footpath is free.",["Tour €13 / €6 (7–17)","Half day"], "Book on menhirs-carnac.fr (no phone bookings). Morning or evening light; add the Prehistory Museum.",1],
- ["south","must","Gulf of Morbihan islands","en:Gulf of Morbihan","⛵","Classic family boat day: cruise the gulf and hop off at Île-aux-Moines — rent bikes and circle the island. Calm, warm(ish) water.",["~€19–27 / ~€13 child","Half–full day"], "Short option: 5-min shuttle from Port Blanc to Île-aux-Moines (~€6 return) + bikes (~€15/day). Book August departures.",1],
- ["south",null,"Vannes","en:Vannes","🏘️","Walkable walled city on the gulf: ramparts gardens, fairy-tale lavoirs, 171 half-timbered houses. Kids' 'detective tour' of gargoyles & crests (€6/€4, Wednesdays).",["Free · half day","Market Wed & Sat"], "Park at the edge (Parc du Golfe / rampart lots) and walk in.",0],
- ["south","must","Château de Suscinio","fr:Château de Suscinio","🏰","Your castle research's #1 for the family: moated ducal castle by the ocean — 21 furnished rooms, Merlin-themed immersive wing, dress-up costumes, medieval games, wall-walks. Plus the 'Arthur' night show Tue/Thu.",["Day €12 / €6.50 · show €17.50 / €11 · under-10 free","Half day / evening"], "Combo day+show ticket saves €3.50. Tue Aug 11 fits the plan — book, 2,000 seats. Mosquito spray for the evening.",1],
- ["south","gem","Rochefort-en-Terre","en:Rochefort-en-Terre","🌸","'France's favourite village 2016' on a rocky spur — geranium windows, Renaissance houses, the Naïa fantasy-art museum in the castle grounds.",["Parking ~€6/day","2–3 h"], "35 km from Vannes; slot it en route or as a morning trip.",0],
- ["south",null,"Forêt Adrénaline & Branféré","fr:Parc animalier et botanique de Branféré","🐒","Two active-kid options: Forêt Adrénaline Carnac tree-top courses (21 routes, 45 ziplines, Junior tier for age 10) and Branféré — 1,500 animals roaming semi-free + 6,000 m² of canopy nets.",["Ropes €18 junior · Branféré ~€29.50 / €22","Half day each"], "Both need August slots booked online. Branféré ticket includes the Parcabout nets.",1],
- ["south","gem","Brocéliande forest","fr:Forêt de Paimpont","🧙","King Arthur & Merlin country: 'La Porte des Secrets' immersive show at Paimpont, the Golden Tree in the Val sans Retour, Merlin's tomb, costumed storyteller walks daily in summer.",["Show ticketed · trails free","Full day"], "Sits perfectly on the final Vannes → Nantes transfer (Aug 22). Grab a trail map at the Paimpont tourist office.",0],
+ ["south","must","Carnac alignments","en:Carnac stones","🗿","The world's largest megalith field — ~3,000 menhirs over 4 km, UNESCO-listed July 2025. In August the rows are entered by guided tour only; the outer footpath is free.",["Tour €13 / €6 (7–17)","Half day","🚗 35 min from Vannes"], "Book on menhirs-carnac.fr (no phone bookings). Morning or evening light; add the Prehistory Museum.",1],
+ ["south","must","Gulf of Morbihan islands","en:Gulf of Morbihan","⛵","Classic family boat day: cruise the gulf and hop off at Île-aux-Moines — rent bikes and circle the island. Calm, warm(ish) water.",["~€19–27 / ~€13 child","Half–full day","🚗 5 min from Vannes"], "Short option: 5-min shuttle from Port Blanc to Île-aux-Moines (~€6 return) + bikes (~€15/day). Book August departures.",1],
+ ["south",null,"Vannes","en:Vannes","🏘️","Walkable walled city on the gulf: ramparts gardens, fairy-tale lavoirs, 171 half-timbered houses. Kids' 'detective tour' of gargoyles & crests (€6/€4, Wednesdays).",["Free · half day","Market Wed & Sat","in town — you're based here"], "Park at the edge (Parc du Golfe / rampart lots) and walk in.",0],
+ ["south","must","Château de Suscinio","fr:Château de Suscinio","🏰","Your castle research's #1 for the family: moated ducal castle by the ocean — 21 furnished rooms, Merlin-themed immersive wing, dress-up costumes, medieval games, wall-walks. Plus the 'Arthur' night show Tue/Thu.",["Day €12 / €6.50 · show €17.50 / €11 · under-10 free","Half day / evening","🚗 30 min from Vannes"], "Combo day+show ticket saves €3.50. Tue Aug 11 fits the plan — book, 2,000 seats. Mosquito spray for the evening.",1],
+ ["south","gem","Rochefort-en-Terre","en:Rochefort-en-Terre","🌸","'France's favourite village 2016' on a rocky spur — geranium windows, Renaissance houses, the Naïa fantasy-art museum in the castle grounds.",["Parking ~€6/day","2–3 h","🚗 40 min from Vannes"], "35 km from Vannes; slot it en route or as a morning trip.",0],
+ ["south",null,"Forêt Adrénaline & Branféré","fr:Parc animalier et botanique de Branféré","🐒","Two active-kid options: Forêt Adrénaline Carnac tree-top courses (21 routes, 45 ziplines, Junior tier for age 10) and Branféré — 1,500 animals roaming semi-free + 6,000 m² of canopy nets.",["Ropes €18 junior · Branféré ~€29.50 / €22","Half day each","🚗 35 min from Vannes"], "Both need August slots booked online. Branféré ticket includes the Parcabout nets.",1],
+ ["south","gem","Brocéliande forest","fr:Forêt de Paimpont","🧙","King Arthur & Merlin country: 'La Porte des Secrets' immersive show at Paimpont, the Golden Tree in the Val sans Retour, Merlin's tomb, costumed storyteller walks daily in summer.",["Show ticketed · trails free","Full day","🚗 1 h from Vannes"], "Sits perfectly on the final Vannes → Nantes transfer (Aug 22). Grab a trail map at the Paimpont tourist office.",0],
 
  ["nantes","must","Les Machines de l'île","en:Machines of the Isle of Nantes","🐘","The 12-m, 49-passenger Grand Éléphant, the three-storey Marine Worlds carousel and the machine gallery. The single best kid-hour in Nantes.",["2026: €12 / €8 (4–12) per activity · 2 activities €20 / €14 · all three €29 / €21 · family −15%","2–3 h"], "<b>2026 prices, from the official tariff page.</b> Elephant departures 23 Jun–30 Aug run 10:15–18:45; only some slots are bookable online, so book the moment your dates are fixed and aim for the 10:15. In the school holidays the Carrousel runs in <i>mode forain</i> — children actually ride the creatures (extra turn €3). Free with the Pass Nantes except the elephant. <b>In a heatwave the Galerie and Carrousel can shut at short notice and elephant rides are cancelled</b> — have a plan B. Tram line 1 is suspended mid-June to late August 2026; replacement buses run and Pont Anne-de-Bretagne stays open on foot.",1],
  ["nantes",null,"Château des ducs de Bretagne","en:Château des ducs de Bretagne","🏰","Moated castle of Anne de Bretagne: ramparts and courtyard free; inside, the 32-room Nantes history museum.",["Courtyard, moat gardens &amp; ramparts free · museum €9, under-18 free","1.5–2 h"], "Jul–Aug the museum opens daily 10:00–19:00 (last tickets 18:30); the rest of the year it shuts Mondays. The 500-m rampart circuit is free and worth 45 min on its own. <b>Note the first-Sunday-free rule does NOT apply in July or August</b> — but under-18s are always free. Even free entries must book a timeslot. A €15 Pass musées covers this plus the Musée d'arts, Musée Jules Verne and Le Chronographe for a year.",0],
@@ -496,6 +499,55 @@ const A = [
  ["nantes","gem","Trentemoult by Navibus","fr:Trentemoult","🎨","A former fishermen's village of pastel-painted houses and narrow lanes on the south bank — reached by a short river ferry that children treat as the main event.",["Navibus included in a normal transport ticket","Half day"], "The Navibus crossing takes about 10 minutes and runs every 20. Rue du Chapeau-Rouge is the prettiest street. Combine with the Jardin Extraordinaire, the quarry garden with the waterfall, on the same bank.",0],
  ["nantes",null,"Le Nid, Tour Bretagne","fr:Tour Bretagne","🐦","A bar on the 32nd floor of Nantes' one brutalist tower, built around a giant white resin stork whose body is the bench — Jean Jullien's joke with the best 360° view in the city attached.",["~€5 to go up","45 min"], "Open roughly 10:00–19:00. Lemonade for the child, Muscadet for the adults, the whole itinerary laid out below you — a good orientation stop on arrival day.",0]
 ];
+
+// Precise [lon,lat] for cards driven to from a base (same coords as drive-times.py,
+// including the "park here not there" corrections — e.g. Mont-Saint-Michel points at
+// the mainland car park, not the car-free island). Cards not listed here (mostly the
+// Nantes region, which is visited car-free) fall back to a Google/Waze name search.
+const COORDS = {
+  "Carnac alignments": [-3.0720587, 47.5734002],
+  "Gulf of Morbihan islands": [-2.7580000, 47.6420000],
+  "Château de Suscinio": [-2.7473853, 47.5051067],
+  "Rochefort-en-Terre": [-2.3374799, 47.6993225],
+  "Forêt Adrénaline & Branféré": [-2.3879791, 47.5980615],
+  "Brocéliande forest": [-2.1468998, 48.0393975],
+  "Crozon peninsula": [-4.4898246, 48.2460918],
+  "Îlot des Capucins": [-4.5953485, 48.2762339],
+  "Pointe du Raz": [-4.6333115, 48.0300365],
+  "Locronan": [-4.2083834, 48.0982244],
+  "Concarneau & Filets Bleus": [-3.9217768, 47.8723438],
+  "Océanopolis (Brest)": [-4.4341000, 48.3906000],
+  "Mont-Saint-Michel": [-1.5099000, 48.6136000],
+  "Saint-Malo intra-muros": [-2.0263022, 48.6481967],
+  "Grand Aquarium Saint-Malo": [-1.9893737, 48.6338652],
+  "Cancale": [-1.8497693, 48.6749696],
+  "Cap Fréhel & Fort la Latte": [-2.2950286, 48.6641401],
+  "Cobac Parc + Aqua'Fun": [-1.8333521, 48.4387257],
+  "Saint-Suliac": [-1.9670520, 48.5710391],
+  "Ploumanac'h — Sentier des Douaniers": [-3.4444966, 48.8157879],
+  "Île de Bréhat": [-3.0229677, 48.8116847],
+  "Vallée des Saints": [-3.5199441, 48.3677198],
+  "Huelgoat forest": [-3.7467195, 48.3636572],
+  // Sept-Îles boat trip & Trestraou/Saint-Guirec beaches: no single coord fits
+  // (two venues each) — fall back to name search so Maps/Waze don't misroute.
+  "Vannes": [-2.7596435, 47.6548431],
+  "Quimper": [-4.0999223, 47.9959505],
+  "Dinan": [-2.0461175, 48.4539787],
+};
+function mapsUrl(title){
+  const c = COORDS[title];
+  return c ? `https://www.google.com/maps/search/?api=1&query=${c[1]},${c[0]}`
+           : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(title+', France')}`;
+}
+function wazeUrl(title){
+  const c = COORDS[title];
+  return c ? `https://waze.com/ul?ll=${c[1]},${c[0]}&navigate=yes`
+           : `https://waze.com/ul?q=${encodeURIComponent(title+', France')}&navigate=yes`;
+}
+function navLinks(title){
+  return `<a class="navl gmaps" href="${mapsUrl(title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Google Maps — ${title}">🗺️ Maps</a>`
+       + `<a class="navl waze" href="${wazeUrl(title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Waze — ${title}">🚕 Waze</a>`;
+}
 
 // Wikimedia Commons photos per card: first entry is primary, second is backup.
 // The page tries a local "photos/" folder first (run download-photos.ps1 once to preload),
@@ -622,7 +674,7 @@ for (const [region,badge,title,wiki,emoji,desc,facts,tip,book] of A){
   body.innerHTML = `
       <h3>${title}</h3>
       <p>${desc}</p>
-      <div class="facts">${facts.map(f=>`<span>${f}</span>`).join('')}${book?'<span class="book">📅 Book ahead</span>':''}</div>
+      <div class="facts">${facts.map(f=>`<span>${f}</span>`).join('')}${book?'<span class="book">📅 Book ahead</span>':''}${navLinks(title)}</div>
       <div class="tip">💡 ${tip}</div>`;
   card.append(ph, body);
   card.addEventListener('click', ()=>openModal(title, emoji, badge, facts, book, desc, tip));
@@ -642,7 +694,7 @@ function openModal(title, emoji, badge, facts, book, desc, tip){
   document.getElementById('mtitle').textContent = title;
   document.getElementById('memoji').textContent = emoji;
   document.getElementById('mfacts').innerHTML =
-    facts.map(f=>`<span>${f}</span>`).join('') + (book?'<span class="book">📅 Book ahead</span>':'');
+    facts.map(f=>`<span>${f}</span>`).join('') + (book?'<span class="book">📅 Book ahead</span>':'') + navLinks(title);
   document.getElementById('mdetail').innerHTML =
     DETAIL[title] || `<p>${desc}</p><h4>Tip</h4><p>${tip}</p>`;
   const hero = modal.querySelector('.mhero');
