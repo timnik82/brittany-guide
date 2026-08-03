@@ -78,6 +78,9 @@
   .card.restaurant-card h3 a{color:var(--sea-d);text-decoration:none}
   .card.restaurant-card h3 a:hover{text-decoration:underline}
   .facts span.mapl{background:#eaf2fb;color:#1a5a96}
+  .facts a.navl{text-decoration:none;display:inline-block;font-size:.74rem;font-weight:600;padding:4px 9px;border-radius:10px}
+  .facts a.gmaps{background:#eaf2fb;color:#1a5a96}
+  .facts a.waze{background:#eef0fb;color:#4a3aa0}
   .modal{position:fixed;inset:0;background:rgba(20,30,36,.6);display:none;z-index:100;padding:26px 12px;overflow-y:auto}
   .modal.open{display:block}
   .mbox{background:#fff;border-radius:16px;max-width:780px;margin:0 auto;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.35)}
@@ -497,6 +500,55 @@ const A = [
  ["nantes",null,"Le Nid, Tour Bretagne","fr:Tour Bretagne","🐦","A bar on the 32nd floor of Nantes' one brutalist tower, built around a giant white resin stork whose body is the bench — Jean Jullien's joke with the best 360° view in the city attached.",["~€5 to go up","45 min"], "Open roughly 10:00–19:00. Lemonade for the child, Muscadet for the adults, the whole itinerary laid out below you — a good orientation stop on arrival day.",0]
 ];
 
+// Precise [lon,lat] for cards driven to from a base (same coords as drive-times.py,
+// including the "park here not there" corrections — e.g. Mont-Saint-Michel points at
+// the mainland car park, not the car-free island). Cards not listed here (mostly the
+// Nantes region, which is visited car-free) fall back to a Google/Waze name search.
+const COORDS = {
+  "Carnac alignments": [-3.0720587, 47.5734002],
+  "Gulf of Morbihan islands": [-2.7580000, 47.6420000],
+  "Château de Suscinio": [-2.7473853, 47.5051067],
+  "Rochefort-en-Terre": [-2.3374799, 47.6993225],
+  "Forêt Adrénaline & Branféré": [-2.3879791, 47.5980615],
+  "Brocéliande forest": [-2.1468998, 48.0393975],
+  "Crozon peninsula": [-4.4898246, 48.2460918],
+  "Îlot des Capucins": [-4.5953485, 48.2762339],
+  "Pointe du Raz": [-4.6333115, 48.0300365],
+  "Locronan": [-4.2083834, 48.0982244],
+  "Concarneau & Filets Bleus": [-3.9217768, 47.8723438],
+  "Océanopolis (Brest)": [-4.4341000, 48.3906000],
+  "Mont-Saint-Michel": [-1.5099000, 48.6136000],
+  "Saint-Malo intra-muros": [-2.0263022, 48.6481967],
+  "Grand Aquarium Saint-Malo": [-1.9893737, 48.6338652],
+  "Cancale": [-1.8497693, 48.6749696],
+  "Cap Fréhel & Fort la Latte": [-2.2950286, 48.6641401],
+  "Cobac Parc + Aqua'Fun": [-1.8333521, 48.4387257],
+  "Saint-Suliac": [-1.9670520, 48.5710391],
+  "Ploumanac'h — Sentier des Douaniers": [-3.4444966, 48.8157879],
+  "Sept-Îles boat trip": [-3.4444966, 48.8157879],
+  "Île de Bréhat": [-3.0229677, 48.8116847],
+  "Vallée des Saints": [-3.5199441, 48.3677198],
+  "Huelgoat forest": [-3.7467195, 48.3636572],
+  "Trestraou & Saint-Guirec beaches": [-3.4444966, 48.8157879],
+  "Vannes": [-2.7596435, 47.6548431],
+  "Quimper": [-4.0999223, 47.9959505],
+  "Dinan": [-2.0461175, 48.4539787],
+};
+function mapsUrl(title){
+  const c = COORDS[title];
+  return c ? `https://www.google.com/maps/search/?api=1&query=${c[1]},${c[0]}`
+           : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(title+', France')}`;
+}
+function wazeUrl(title){
+  const c = COORDS[title];
+  return c ? `https://waze.com/ul?ll=${c[1]},${c[0]}&navigate=yes`
+           : `https://waze.com/ul?q=${encodeURIComponent(title+', France')}&navigate=yes`;
+}
+function navLinks(title){
+  return `<a class="navl gmaps" href="${mapsUrl(title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🗺️ Maps</a>`
+       + `<a class="navl waze" href="${wazeUrl(title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🚕 Waze</a>`;
+}
+
 // Wikimedia Commons photos per card: first entry is primary, second is backup.
 // The page tries a local "photos/" folder first (run download-photos.ps1 once to preload),
 // then falls back to loading from Wikimedia over the internet.
@@ -622,7 +674,7 @@ for (const [region,badge,title,wiki,emoji,desc,facts,tip,book] of A){
   body.innerHTML = `
       <h3>${title}</h3>
       <p>${desc}</p>
-      <div class="facts">${facts.map(f=>`<span>${f}</span>`).join('')}${book?'<span class="book">📅 Book ahead</span>':''}</div>
+      <div class="facts">${facts.map(f=>`<span>${f}</span>`).join('')}${book?'<span class="book">📅 Book ahead</span>':''}${navLinks(title)}</div>
       <div class="tip">💡 ${tip}</div>`;
   card.append(ph, body);
   card.addEventListener('click', ()=>openModal(title, emoji, badge, facts, book, desc, tip));
@@ -642,7 +694,7 @@ function openModal(title, emoji, badge, facts, book, desc, tip){
   document.getElementById('mtitle').textContent = title;
   document.getElementById('memoji').textContent = emoji;
   document.getElementById('mfacts').innerHTML =
-    facts.map(f=>`<span>${f}</span>`).join('') + (book?'<span class="book">📅 Book ahead</span>':'');
+    facts.map(f=>`<span>${f}</span>`).join('') + (book?'<span class="book">📅 Book ahead</span>':'') + navLinks(title);
   document.getElementById('mdetail').innerHTML =
     DETAIL[title] || `<p>${desc}</p><h4>Tip</h4><p>${tip}</p>`;
   const hero = modal.querySelector('.mhero');
