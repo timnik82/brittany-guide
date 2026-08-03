@@ -525,11 +525,11 @@ const COORDS = {
   "Cobac Parc + Aqua'Fun": [-1.8333521, 48.4387257],
   "Saint-Suliac": [-1.9670520, 48.5710391],
   "Ploumanac'h — Sentier des Douaniers": [-3.4444966, 48.8157879],
-  "Sept-Îles boat trip": [-3.4444966, 48.8157879],
   "Île de Bréhat": [-3.0229677, 48.8116847],
   "Vallée des Saints": [-3.5199441, 48.3677198],
   "Huelgoat forest": [-3.7467195, 48.3636572],
-  "Trestraou & Saint-Guirec beaches": [-3.4444966, 48.8157879],
+  // Sept-Îles boat trip & Trestraou/Saint-Guirec beaches: no single coord fits
+  // (two venues each) — fall back to name search so Maps/Waze don't misroute.
   "Vannes": [-2.7596435, 47.6548431],
   "Quimper": [-4.0999223, 47.9959505],
   "Dinan": [-2.0461175, 48.4539787],
@@ -545,8 +545,8 @@ function wazeUrl(title){
            : `https://waze.com/ul?q=${encodeURIComponent(title+', France')}&navigate=yes`;
 }
 function navLinks(title){
-  return `<a class="navl gmaps" href="${mapsUrl(title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🗺️ Maps</a>`
-       + `<a class="navl waze" href="${wazeUrl(title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🚕 Waze</a>`;
+  return `<a class="navl gmaps" href="${mapsUrl(title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Google Maps — ${title}">🗺️ Maps</a>`
+       + `<a class="navl waze" href="${wazeUrl(title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Waze — ${title}">🚕 Waze</a>`;
 }
 
 // Wikimedia Commons photos per card: first entry is primary, second is backup.
