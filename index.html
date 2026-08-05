@@ -201,9 +201,87 @@
 <section class="page" id="page-south">
   <h2>Base 1 · Vannes &amp; the Gulf of Morbihan (Sun 9 – Fri 14 Aug)</h2>
   <p class="sub">Warmest, calmest water in Brittany (~4 m tides vs 13 m up north), UNESCO megaliths, and the best family castle.</p>
+  <div class="subnav" id="south-subnav">
+    <button data-sub="attractions" class="active">🗿 Attractions</button>
+    <button data-sub="food">🥞 Food</button>
+  </div>
+
+  <div class="subpage active" id="south-sub-attractions">
   <div class="searchbar"><input type="search" placeholder="Filter attractions…" oninput="filterCards(this)"></div>
   <div class="grid" data-region="south"></div>
-  <div class="callout"><b>Where to eat picks (Vannes):</b> Daily Gourmand (on the port, 100% house-made, seasonal + burgers), Café des Orfèvres (18 rue des Vierges, café/salon de thé, easy lunches and weekend brunch, closed Mon), La P'tite Souris (36 Rue du Port, traditional market cuisine, kid-friendly, reserve ahead), or La Crêperie du Port (Rue du Port, house-made galettes, kids' play corner). All four confirmed open and central, walkable from the ramparts. <i>Correction: crêperie Avel-Vras — well-reviewed but is actually in Séné, ~10 min drive south of Vannes, not walkable from the ramparts; its "Vannes" registered address is a sideline bookshop, not the restaurant.</i></div>
+  </div>
+
+  <div class="subpage" id="south-sub-food">
+  <div class="callout"><b>The short version:</b> Vannes' old town is small enough that everything below is a walk from the ramparts. The trap is the weekly closing day — <b>Sarra'Zen and Dan Ewen are both shut Monday</b>, and Dan Ewen is shut Sunday too, which knocks out your arrival evening (Sun 9 Aug) and your first full day. <b>La Crêperie de Jeanne is the one open every day</b>, so make it the fallback. Book dinners a day or two ahead in August.</div>
+  <div class="callout"><b>Market days:</b> the big open-air market fills <b>Place des Lices every Wednesday and Saturday, 8:00–13:30</b> — <b>Wed 12 Aug falls inside your stay</b>. Two covered halls run alongside it: the <b>Halle des Lices</b> (Tue–Sun 8:00–14:00, and <b>open every day in July–August</b>) has a tasting area where you can eat what you just bought, and the <b>Halle aux poissons</b> on Place de la Poissonnerie (Tue, Wed, Fri, Sat 8:00–13:00) sells Gulf of Morbihan oysters off the boat. Cheapest good lunch in town, and the most fun with a kid.</div>
+  <div class="callout"><b>Grown-up option:</b> <b>La Tête en l'Air</b> (1 Michelin star) reopened 6 May 2026 after a full renovation, with a blind-tasting format. <b>Wed–Sat only, 12:00–13:30 and 19:30–21:00</b>, and the kitchen states it can't adapt to vegan or lactose-free diets — dietary needs must be flagged 48 h ahead at booking. A no-choice tasting menu is a hard sell with a child, so treat this as a night off, not a family dinner. <i>Correction carried over: crêperie Avel-Vras — well-reviewed but actually in Séné, ~10 min drive south, not walkable from the ramparts; its "Vannes" registered address is a sideline bookshop, not the restaurant.</i></div>
+
+  <h3 style="margin:22px 0 4px">📍 Vannes restaurants on the map</h3>
+  <p class="sub" style="margin-top:0">Tap a name for the restaurant's own site, or the 📍 to open it in Google Maps. Photos below are representative dishes (from Wikimedia Commons), not photos of the actual venue.</p>
+  <div class="grid" id="vannes-restaurants">
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3><a class="tsite" href="https://creperielesjosephine.fr" target="_blank" rel="noopener" title="Official website">Crêperie Les Joséphine<span class="ext">↗</span></a><a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=Cr%C3%AAperie%20Les%20Jos%C3%A9phine%2C%208%20rue%20des%20Orf%C3%A8vres%2C%2056000%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — Crêperie Les Joséphine">📍</a></h3>
+      <p>8 rue des Orfèvres, in the historic centre a few steps from the ramparts. Going since 1997; organic Breton buckwheat flour milled in the region, house salted-caramel, terrace in summer. <b>Open all week</b> — the safest central crêperie booking. 1,000+ reviews. Reserve by phone.</p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3><a class="tsite" href="https://www.la-creperie-sarrazen.fr" target="_blank" rel="noopener" title="Official website">La Crêperie Sarra'Zen<span class="ext">↗</span></a><a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=La%20Cr%C3%AAperie%20Sarra%27Zen%2C%2021%20rue%20No%C3%A9%2C%2056000%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — La Crêperie Sarra'Zen">📍</a></h3>
+      <p>21 rue Noé, on Place du Poids Public by the market, 50 m from the port. Gimmick that actually works: <b>you pick your galette's cooking — crisp-edged, crisp all through, or soft</b>. Local produce, organic Carnac cider. €10–20. <b>Wed–Sun 12:00–14:30 &amp; 18:30–21:00; closed Mon &amp; Tue.</b> Reservation recommended.</p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3><a class="tsite" href="https://www.creperie-danewen.fr" target="_blank" rel="noopener" title="Official website">Crêperie Dan Ewen<span class="ext">↗</span></a><a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=Cr%C3%AAperie%20Dan%20Ewen%2C%203%20place%20du%20G%C3%A9n%C3%A9ral%20de%20Gaulle%2C%2056000%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — Crêperie Dan Ewen">📍</a></h3>
+      <p>3 place du Général de Gaulle, in the oldest quarter by the église Saint-Patern, ~500 m from the old port. One of the longest-running Breton kitchens in Vannes (family-run since 1997); named galettes — Patern, Île de Logoden, Andouille de Guémené. <b>Tue–Thu 11:30–13:45 &amp; 18:30–21:00; Fri–Sat to 21:30; closed Sun &amp; Mon.</b></p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3><a class="tsite" href="https://www.lacreperiedejeanne.com" target="_blank" rel="noopener" title="Official website">La Crêperie de Jeanne<span class="ext">↗</span></a><a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=La%20Cr%C3%AAperie%20de%20Jeanne%2C%206%20rue%20Bienheureux%20Pierre%20Ren%C3%A9%20Rogues%2C%2056000%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — La Crêperie de Jeanne">📍</a></h3>
+      <p>6 rue Bienheureux Pierre René Rogues — 50 m from both the cathedral and the port. <b>Open every day</b>, 12:00–15:00 and 19:00–22:00, with <b>continuous service 10:00–22:00 on Sat &amp; Sun</b> — the one place that solves a late or awkward mealtime. Beyond galettes there are moules, entrecôte, burgers and house fries, so it survives a galette-refusing child. Reserve.</p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3>La Crêperie du Port<a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=La%20Cr%C3%AAperie%20du%20Port%2C%20rue%20du%20Port%2C%2056000%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — La Crêperie du Port">📍</a></h3>
+      <p>Rue du Port, on the walk between the ramparts and the marina. House-made galettes and a <b>kids' play corner</b> — the reason it earns its place over flashier addresses. Easy walk-in at lunch, busier at dinner.</p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🍲</span><img alt="Market produce" loading="lazy" src="photos/Kig-ha-farz.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Kig-ha-farz.jpg?width=800'"></div>
+      <div class="body"><h3><a class="tsite" href="https://www.dailygourmand.fr/" target="_blank" rel="noopener" title="Official website">Daily Gourmand<span class="ext">↗</span></a><a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=Daily%20Gourmand%2C%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — Daily Gourmand">📍</a></h3>
+      <p>Right on the port. <b>100% fait maison</b> — seasonal plates through to burgers, which makes it an easy compromise meal. Good value, convivial rather than formal. Handy before or after a Gulf boat trip.</p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>☕</span><img alt="Croissants" loading="lazy" src="photos/Croissants au beurre (18953292873).jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Croissants au beurre (18953292873).jpg?width=800'"></div>
+      <div class="body"><h3>Café des Orfèvres<a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9%20des%20Orf%C3%A8vres%2C%2018%20rue%20des%20Vierges%2C%2056000%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — Café des Orfèvres">📍</a></h3>
+      <p>18 rue des Vierges. Café and salon de thé doing simple lunches and a good weekend brunch — a daytime stop rather than a formal dinner. <b>Closed Monday.</b></p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🍲</span><img alt="Traditional dish" loading="lazy" src="photos/Roasted chicken and french fries - La Petite Plage 2025-03-25.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Roasted chicken and french fries - La Petite Plage 2025-03-25.jpg?width=800'"></div>
+      <div class="body"><h3><a class="tsite" href="https://www.laptitesouris.fr/" target="_blank" rel="noopener" title="Official website">La P'tite Souris<span class="ext">↗</span></a><a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=La%20P%27tite%20Souris%2C%2036%20rue%20du%20Port%2C%2056000%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — La P'tite Souris">📍</a></h3>
+      <p>36 rue du Port. Small traditional kitchen — <b>cuisine du marché, fait maison</b>, changing with what's good that week. Takes children, but <b>works by reservation</b>, so it's not a walk-in. The pick when you want home cooking rather than another galette.</p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🧺</span><img alt="Kouign amann" loading="lazy" src="photos/Kouign_amann.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Kouign_amann.jpg?width=800'"></div>
+      <div class="body"><h3><a class="tsite" href="https://www.golfedumorbihan.bzh/explorer-vannes/gastronomie-vannes/marches/marche-de-vannes" target="_blank" rel="noopener" title="Tourist office page">Halle des Lices<span class="ext">↗</span></a><a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=Halle%20des%20Lices%2C%20place%20des%20Lices%2C%2056000%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — Halle des Lices">📍</a></h3>
+      <p>Place des Lices. Around thirty traders — vegetables, cheese, charcuterie, kouign amann, salted-butter caramel — plus a <b>tasting area where you can sit and eat what you've just bought</b>. <b>Tue–Sun 8:00–14:00, and open daily in July–August.</b> The cheap, low-effort lunch when nobody wants a restaurant.</p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🦪</span><img alt="Oysters" loading="lazy" src="photos/Cancale_-_Hu%C3%AEtres_21.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cancale_-_Hu%C3%AEtres_21.jpg?width=800'"></div>
+      <div class="body"><h3><a class="tsite" href="https://www.golfedumorbihan.bzh/explorer-vannes/gastronomie-vannes/marches/marche-de-vannes" target="_blank" rel="noopener" title="Tourist office page">Halle aux poissons<span class="ext">↗</span></a><a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=Halle%20aux%20poissons%2C%20place%20de%20la%20Poissonnerie%2C%2056000%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — Halle aux poissons">📍</a></h3>
+      <p>Place de la Poissonnerie, in a hall built at the end of the Middle Ages. About twenty permanent fishmongers: scallops, winkles, spider crab, sea bass, bream, and <b>Gulf of Morbihan oysters</b>. <b>Tue, Wed, Fri, Sat 8:00–13:00.</b> Worth walking through even if you buy nothing.</p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🗿</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
+      <div class="body"><h3>Crêperie Au Pressoir · Carnac<a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=Cr%C3%AAperie%20Au%20Pressoir%2C%20Le%20M%C3%A9nec%2C%2056340%20Carnac%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — Crêperie Au Pressoir">📍</a></h3>
+      <p>For the Carnac alignments day, not for Vannes. A late-19th-century farmhouse <b>facing the Ménec alignments</b> — the garden is ringed by the standing stones, so children can run between menhirs while you finish the cider. Family-run since 1968, artisanal buckwheat flour. <b>⚠ Call ahead (+33 2 97 52 01 86): one directory lists it as closed while Morbihan Tourisme still recommends it — status unresolved.</b></p>
+      </div></article>
+
+    <article class="card restaurant-card"><div class="ph"><span>🐐</span><img alt="Farm produce" loading="lazy" src="photos/Bol%C3%A9e_de_cidre_au_Bouchon_Breton_(La_Valbonne).jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Bol%C3%A9e_de_cidre_au_Bouchon_Breton_(La_Valbonne).jpg?width=800'"></div>
+      <div class="body"><h3>La Ferme de Bodérin · Sarzeau<a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=Cr%C3%AAperie%20la%20Ferme%20de%20Bod%C3%A9rin%2C%2056370%20Sarzeau%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — La Ferme de Bodérin">📍</a></h3>
+      <p>Pair this with <b>Château de Suscinio</b> — both are on the Rhuys peninsula. A farm crêperie with a charming terrace and a <b>mini-farm of animals</b> next to it, picked out by Morbihan Tourisme's family list. The Rhuys speciality to look for locally is <i>tome de Rhuys</i> cheese. Call ahead in August.</p>
+      </div></article>
+
+  </div>
+  </div>
 </section>
 
 <section class="page" id="page-nantes">
@@ -818,13 +896,15 @@ nav.addEventListener('click', e=>{
   window.scrollTo({top:0});
 });
 
-// Nantes sub-tabs (Attractions / Food)
-const nantesSubnav = document.getElementById('nantes-subnav');
-nantesSubnav.addEventListener('click', e=>{
-  const b = e.target.closest('button'); if(!b) return;
-  nantesSubnav.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));
-  document.getElementById('page-nantes').querySelectorAll('.subpage').forEach(p=>p.classList.toggle('active',p.id==='nantes-sub-'+b.dataset.sub));
-  window.scrollTo({top:0});
+// Sub-tabs (Attractions / Food) — works for any section with a "<key>-subnav" id
+document.querySelectorAll('.subnav').forEach(subnav=>{
+  const key = subnav.id.replace(/-subnav$/,'');
+  subnav.addEventListener('click', e=>{
+    const b = e.target.closest('button'); if(!b) return;
+    subnav.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));
+    subnav.closest('.page').querySelectorAll('.subpage').forEach(p=>p.classList.toggle('active',p.id===key+'-sub-'+b.dataset.sub));
+    window.scrollTo({top:0});
+  });
 });
 
 // search filter within a page
