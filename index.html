@@ -104,7 +104,7 @@
   .mbody ul{margin:4px 0 8px;padding-left:20px}
   .mbody li{font-size:.9rem;color:#34434c;margin-bottom:4px}
   @media(max-width:640px){.mhero{height:220px}.mbody{padding:16px 18px 22px}}
-  @media print{nav,.searchbar{display:none}.page{display:block!important}}
+  @media print{nav,.subnav,.searchbar{display:none}.page,.subpage{display:block!important}}
 </style>
 </head>
 <body>
@@ -212,9 +212,9 @@
   </div>
 
   <div class="subpage" id="south-sub-food">
-  <div class="callout"><b>The short version:</b> Vannes' old town is small enough that everything below is a walk from the ramparts. The trap is the weekly closing day — <b>Sarra'Zen and Dan Ewen are both shut Monday</b>, and Dan Ewen is shut Sunday too, which knocks out your arrival evening (Sun 9 Aug) and your first full day. <b>La Crêperie de Jeanne is the one open every day</b>, so make it the fallback. Book dinners a day or two ahead in August.</div>
+  <div class="callout"><b>The short version:</b> The central Vannes picks below are a walk from the ramparts; the final two cards are day-trip stops for Carnac and the Rhuys peninsula. The trap is the weekly closing day — <b>Sarra'Zen and Dan Ewen are both shut Monday</b>, and Dan Ewen is shut Sunday too, which knocks out your arrival evening (Sun 9 Aug) and your first full day. <b>La Crêperie de Jeanne is confirmed open every day</b> ("Ouvert tous les jours" on its own site), so make it the fallback; Les Joséphine's site says it welcomes guests all week but posts no concrete hours, so call ahead. Book dinners a day or two ahead in August.</div>
   <div class="callout"><b>Market days:</b> the big open-air market fills <b>Place des Lices every Wednesday and Saturday, 8:00–13:30</b> — <b>Wed 12 Aug falls inside your stay</b>. Two covered halls run alongside it: the <b>Halle des Lices</b> (Tue–Sun 8:00–14:00, and <b>open every day in July–August</b>) has a tasting area where you can eat what you just bought, and the <b>Halle aux poissons</b> on Place de la Poissonnerie (Tue, Wed, Fri, Sat 8:00–13:00) sells Gulf of Morbihan oysters off the boat. Cheapest good lunch in town, and the most fun with a kid.</div>
-  <div class="callout"><b>Grown-up option:</b> <b>La Tête en l'Air</b> (1 Michelin star) reopened 6 May 2026 after a full renovation, with a blind-tasting format. <b>Wed–Sat only, 12:00–13:30 and 19:30–21:00</b>, and the kitchen states it can't adapt to vegan or lactose-free diets — dietary needs must be flagged 48 h ahead at booking. A no-choice tasting menu is a hard sell with a child, so treat this as a night off, not a family dinner. <i>Correction carried over: crêperie Avel-Vras — well-reviewed but actually in Séné, ~10 min drive south, not walkable from the ramparts; its "Vannes" registered address is a sideline bookshop, not the restaurant.</i></div>
+  <div class="callout"><b>Grown-up option:</b> <b>La Tête en l'Air</b> (1 Michelin star) reopened 6 May 2026 after a full renovation, with a blind-tasting format. <b>Wed–Sat only, 12:00–13:30 and 19:30–21:00</b>, and the kitchen states it can't adapt to vegan or lactose-free diets — dietary needs must be flagged 48 h ahead at booking. A no-choice tasting menu is a hard sell with a child, so treat this as a night off, not a family dinner. <i>Watch out: crêperie Avel-Vras is well reviewed but is actually in Séné, ~10 min drive south — the "Vannes" address shown in listings is a sideline bookshop, not the restaurant.</i></div>
 
   <h3 style="margin:22px 0 4px">📍 Vannes restaurants on the map</h3>
   <p class="sub" style="margin-top:0">Tap a name for the restaurant's own site, or the 📍 to open it in Google Maps. Photos below are representative dishes (from Wikimedia Commons), not photos of the actual venue.</p>
@@ -222,7 +222,7 @@
 
     <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
       <div class="body"><h3><a class="tsite" href="https://creperielesjosephine.fr" target="_blank" rel="noopener" title="Official website">Crêperie Les Joséphine<span class="ext">↗</span></a><a class="tpin" href="https://www.google.com/maps/search/?api=1&amp;query=Cr%C3%AAperie%20Les%20Jos%C3%A9phine%2C%208%20rue%20des%20Orf%C3%A8vres%2C%2056000%20Vannes%2C%20France" target="_blank" rel="noopener" title="Open in Google Maps" aria-label="Google Maps — Crêperie Les Joséphine">📍</a></h3>
-      <p>8 rue des Orfèvres, in the historic centre a few steps from the ramparts. Going since 1997; organic Breton buckwheat flour milled in the region, house salted-caramel, terrace in summer. <b>Open all week</b> — the safest central crêperie booking. 1,000+ reviews. Reserve by phone.</p>
+      <p>8 rue des Orfèvres, in the historic centre a few steps from the ramparts. Going since 1997; organic Breton buckwheat flour milled in the region, house salted-caramel, terrace in summer. <b>Site says it welcomes guests all week but lists no hours — call ahead to confirm (02 97 47 28 18).</b> 1,000+ reviews. Reserve by phone.</p>
       </div></article>
 
     <article class="card restaurant-card"><div class="ph"><span>🥞</span><img alt="Galette" loading="lazy" src="photos/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApes_de_bl%C3%A9_noir_de_Basse_Bretagne.jpg?width=800'"></div>
@@ -907,10 +907,12 @@ document.querySelectorAll('.subnav').forEach(subnav=>{
   });
 });
 
-// search filter within a page
+// search filter within a page — scoped to the active subpage (if any) so filtering
+// Attractions doesn't hide Food cards. Falls back to the page for sections without subpages.
 function filterCards(input){
   const q = input.value.toLowerCase();
-  input.closest('.page').querySelectorAll('.card').forEach(c=>{
+  const scope = input.closest('.subpage') || input.closest('.page');
+  scope.querySelectorAll('.card').forEach(c=>{
     c.style.display = c.textContent.toLowerCase().includes(q) ? '' : 'none';
   });
 }
