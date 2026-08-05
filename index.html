@@ -75,6 +75,12 @@
   .card.restaurant-card{cursor:default}
   .card.restaurant-card:hover{transform:none;box-shadow:0 1px 3px rgba(30,42,50,.06)}
   .card.restaurant-card .ph{height:130px}
+  h3 a.tsite{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(0,0,0,.28)}
+  h3 a.tsite:hover{color:var(--sea-d);border-bottom-color:var(--sea-d)}
+  h3 a.tsite .ext{font-size:.72em;opacity:.55;margin-left:2px;vertical-align:super}
+  h3 a.tpin{text-decoration:none;margin-left:7px;font-size:.9em;opacity:.6;vertical-align:baseline}
+  h3 a.tpin:hover{opacity:1}
+  .mbody h3 a.tsite{border-bottom-color:rgba(0,0,0,.2)}
   .card.restaurant-card h3 a{color:var(--sea-d);text-decoration:none}
   .card.restaurant-card h3 a:hover{text-decoration:underline}
   .facts span.mapl{background:#eaf2fb;color:#1a5a96}
@@ -560,6 +566,60 @@ function navLinks(title){
        + `<a class="navl waze" href="${wazeUrl(title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Waze — ${title}">🚕 Waze</a>`;
 }
 
+// Official website per card (verified Aug 2026 via You.com search).
+// Falls back to no link if a card isn't listed.
+const SITE = {
+  "Mont-Saint-Michel": "https://www.abbaye-mont-saint-michel.fr/",
+  "Saint-Malo intra-muros": "https://www.saint-malo-tourisme.com/",
+  "Grand Aquarium Saint-Malo": "https://www.aquarium-st-malo.com/",
+  "Dinan": "https://www.dinan-capfrehel.com/",
+  "Cancale": "https://www.saint-malo-tourisme.com/",
+  "Cap Fr\u00e9hel & Fort la Latte": "https://www.lefortlalatte.com/",
+  "Cobac Parc + Aqua'Fun": "https://www.cobac-parc.com/",
+  "Saint-Suliac": "https://www.saint-suliac.fr/",
+  "Ploumanac'h \u2014 Sentier des Douaniers": "https://www.perros-guirec.com/accueil/preparer-mon-sejour/sortir-et-bouger/balades-et-randos/circuits-pedestres/le-sentier-des-douaniers/",
+  "Sept-\u00celes boat trip": "https://armor-navigation.bzh/",
+  "\u00cele de Br\u00e9hat": "https://brehat-infos.fr/",
+  "Vall\u00e9e des Saints": "https://www.lavalleedessaints.com/",
+  "Huelgoat forest": "https://www.carhaixpohertourisme.bzh/incontournables/la-foret-de-huelgoat/",
+  "Trestraou & Saint-Guirec beaches": "https://www.perros-guirec.com/",
+  "Crozon peninsula": "https://www.crozon-tourisme.bzh/",
+  "\u00celot des Capucins": "https://www.crozon-tourisme.bzh/",
+  "Pointe du Raz": "https://pointeduraz.com/",
+  "Locronan": "https://www.locronan-tourisme.bzh/",
+  "Quimper": "https://www.quimper-tourisme.bzh/",
+  "Concarneau & Filets Bleus": "https://www.festivaldesfiletsbleus.bzh/",
+  "Oc\u00e9anopolis (Brest)": "https://www.oceanopolis.com/",
+  "Carnac alignments": "https://www.menhirs-carnac.fr/",
+  "Gulf of Morbihan islands": "https://www.golfedumorbihan.bzh/explorer-vannes/decouvrir-vannes/golfe-morbihan/",
+  "Vannes": "https://www.golfedumorbihan.bzh/",
+  "Ch\u00e2teau de Suscinio": "https://www.suscinio.fr/",
+  "Rochefort-en-Terre": "https://www.rochefortenterre-tourisme.bzh/",
+  "For\u00eat Adr\u00e9naline & Branf\u00e9r\u00e9": "https://www.branfere.com/fr/",
+  "Broc\u00e9liande forest": "https://www.broceliande-laportedessecrets.com/",
+  "Les Machines de l'\u00eele": "https://www.lesmachines-nantes.fr/",
+  "Ch\u00e2teau des ducs de Bretagne": "https://www.chateaunantes.fr/",
+  "Jardin des Plantes & the green line": "https://metropole.nantes.fr/lieu/jardin-des-plantes",
+  "Sea day option: Gu\u00e9rande & La Baule": "https://www.labaule-guerande.com/",
+  "Plan\u00e8te Sauvage": "https://www.planetesauvage.com/",
+  "Clisson & Ch\u00e2teau de Clisson": "https://www.chateau-clisson.fr/",
+  "Pornic & Ch\u00e2teau de Pornic": "https://www.chateaudepornic.fr/",
+  "Puy du Fou": "https://www.puydufou.com/france/fr",
+  "Mus\u00e9um d'histoire naturelle": "https://museum.nantesmetropole.fr/",
+  "\u00cele de Versailles \u2014 the Japanese garden": "https://metropole.nantes.fr/lieu/ile-de-versailles",
+  "Plan\u00e9tarium de Nantes": "https://planetarium.nantesmetropole.fr/",
+  "Trentemoult by Navibus": "https://www.nantes-tourisme.com/fr/patrimoine/trentemoult",
+  "Le Nid, Tour Bretagne": "https://www.levoyageanantes.fr/oeuvres/le-nid/"
+};
+// Card heading: name links to the official site, pin links to Google Maps.
+function titleHTML(title){
+  const site = SITE[title];
+  const name = site
+    ? `<a class="tsite" href="${site}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Official website">${title}<span class="ext">\u2197</span></a>`
+    : title;
+  return `${name}<a class="tpin" href="${mapsUrl(title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Open in Google Maps" aria-label="Google Maps \u2014 ${title}">\ud83d\udccd</a>`;
+}
+
 // Wikimedia Commons photos per card: first entry is primary, second is backup.
 // The page tries a local "photos/" folder first (run download-photos.ps1 once to preload),
 // then falls back to loading from Wikimedia over the internet.
@@ -683,7 +743,7 @@ for (const [region,badge,title,wiki,emoji,desc,facts,tip,book] of A){
   const body = document.createElement('div');
   body.className='body';
   body.innerHTML = `
-      <h3>${title}</h3>
+      <h3>${titleHTML(title)}</h3>
       <p>${desc}</p>
       <div class="facts">${facts.map(f=>`<span>${f}</span>`).join('')}${book?'<span class="book">📅 Book ahead</span>':''}${navLinks(title)}</div>
       <div class="tip">💡 ${tip}</div>`;
@@ -701,11 +761,11 @@ document.body.insertAdjacentHTML('beforeend',
     </div>
   </div>`);
 const modal = document.getElementById('modal');
-function openModal(title, emoji, badge, facts, book, desc, tip){
-  document.getElementById('mtitle').textContent = title;
+function openModal(title, emoji, badge, facts, book, desc, tip, links=true){
+  document.getElementById('mtitle').innerHTML = links ? titleHTML(title) : title;
   document.getElementById('memoji').textContent = emoji;
   document.getElementById('mfacts').innerHTML =
-    facts.map(f=>`<span>${f}</span>`).join('') + (book?'<span class="book">📅 Book ahead</span>':'') + navLinks(title);
+    facts.map(f=>`<span>${f}</span>`).join('') + (book?'<span class="book">📅 Book ahead</span>':'') + (links?navLinks(title):'');
   document.getElementById('mdetail').innerHTML =
     DETAIL[title] || `<p>${desc}</p><h4>Tip</h4><p>${tip}</p>`;
   const hero = modal.querySelector('.mhero');
@@ -740,7 +800,7 @@ document.querySelectorAll('.food-card').forEach(card=>{
   const emoji = card.querySelector('.ph span').textContent;
   const desc = card.querySelector('.body > p').innerHTML;
   const facts = [...card.querySelectorAll('.facts span')].map(s=>s.textContent);
-  card.addEventListener('click', ()=>openModal(title, emoji, null, facts, false, desc, ''));
+  card.addEventListener('click', ()=>openModal(title, emoji, null, facts, false, desc, '', false));
 });
 
 // tabs
